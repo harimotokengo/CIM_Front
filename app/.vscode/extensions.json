@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "ms-ceintl.vscode-language-pack-ja",
+    "esbenp.prettier-vscode",
+    "rvest.vs-code-prettier-eslint",
+    "hb432.prettier-eslint-typescript"
+  ]
+}
