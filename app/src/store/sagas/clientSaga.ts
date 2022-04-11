@@ -3,8 +3,11 @@ import { all, call, put, takeLatest } from 'typed-redux-saga'
 
 import { FETCH_CLIENT_REQUEST, fetchClientFailure, fetchClientSuccess } from '../actions/clientAction'
 import { IClient } from '../models/clientModel'
+import { baseURL } from '.'
 
-const getClients = () => axios.get<IClient>('http://localhost:3000/api/clients/99')
+const path = '/clients'
+
+const getClients = () => axios.get<IClient>(`${baseURL}${path}/99`)
 
 function* fetchClientSaga() {
   try {
