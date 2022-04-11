@@ -1,4 +1,4 @@
-import { SpaceProps, space } from 'styled-system'
+import { space, SpaceProps } from 'styled-system'
 
 export interface BaseProps extends SpaceProps {
   css?: string

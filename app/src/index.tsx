@@ -2,11 +2,12 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
+
 import App from './App'
-import store from './store'
-import * as serviceWorker from './serviceWorker'
-import lightTheme from './theme/light'
 import reportWebVitals from './reportWebVitals'
+import * as serviceWorker from './serviceWorker'
+import store from './store'
+import lightTheme from './theme/light'
 
 const container = document.getElementById('root')
 const root = createRoot(container as Element)

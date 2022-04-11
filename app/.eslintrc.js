@@ -21,7 +21,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
     project: ['./tsconfig.json'],
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react', '@typescript-eslint', 'simple-import-sort', 'prettier', '@jambit/typed-redux-saga'],
   ignorePatterns: ['.eslintrc.js'],
   rules: {
     // Best Practices
@@ -30,7 +30,8 @@ module.exports = {
     'no-eval': 'error',
     'max-len': ['error', { code: 120 }],
     eqeqeq: ['error', 'always'],
-    // indent: ['warn', 2, { SwitchCase: 1 }], // prettier
+    'simple-import-sort/imports': 'error',
+    indent: ['warn', 2, { SwitchCase: 1 }], // prettier
 
     // More
     'no-use-before-define': 'off',
@@ -86,7 +87,7 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-inferrable-types': 'off',
-    '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/explicit-member-accessibility': [
       'error',
       {
@@ -96,12 +97,12 @@ module.exports = {
         },
       },
     ],
-    '@typescript-eslint/explicit-function-return-type': [
-      'warn',
-      {
-        allowExpressions: true,
-      },
-    ],
+    // '@typescript-eslint/explicit-function-return-type': [
+    //   'warn',
+    //   {
+    //     allowExpressions: true,
+    //   },
+    // ],
     '@typescript-eslint/no-parameter-properties': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
@@ -120,4 +121,13 @@ module.exports = {
       },
     },
   },
+  overrides: [
+    {
+      files: ['./**/*.ts'],
+      rules: {
+        '@jambit/typed-redux-saga/use-typed-effects': 'error',
+        '@jambit/typed-redux-saga/delegate-effects': 'error',
+      },
+    },
+  ],
 }

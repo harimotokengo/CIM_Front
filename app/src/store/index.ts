@@ -1,17 +1,14 @@
-import { createStore, applyMiddleware, Store, combineReducers, Reducer } from 'redux'
-import thunkMiddleware from 'redux-thunk'
-import { User } from './models/user-model'
-import userReducer from './reducers/user-reducer'
+import { applyMiddleware, createStore, Store } from 'redux'
+import logger from 'redux-logger'
+import createSagaMiddleware from 'redux-saga'
 
-interface State {
-  user: User
-}
+import rootReducer from './rootReducer'
+import rootSaga from './rootSaga'
 
-const rootReducers: Reducer<State> = combineReducers({
-  user: userReducer,
-})
+const sagaMiddleware = createSagaMiddleware()
 
-const store: Store = createStore(rootReducers, applyMiddleware(thunkMiddleware))
+const store: Store = createStore(rootReducer, applyMiddleware(sagaMiddleware, logger))
 
-store.subscribe(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
+sagaMiddleware.run(rootSaga)
+
 export default store

@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
-import { ButtonProps } from '.'
+
 import { baseSpacing, baseStyles } from '../Base'
+import { ButtonProps } from '.'
 
 export const StyledButton = styled.button<ButtonProps>`
   border-radius: ${props => props.theme.radii};
