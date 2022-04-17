@@ -82,6 +82,8 @@ module.exports = {
         html: true,
       },
     ],
+    'react/jsx-props-no-spreading': 'off',
+    'react/require-default-props': 'off',
 
     //TypeScript
     '@typescript-eslint/ban-ts-comment': 'off',

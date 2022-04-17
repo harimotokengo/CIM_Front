@@ -1,6 +1,7 @@
 version: "3"
 services:
   front:
+    image: kentiee/cim_front:latest
     build: .
     volumes:
       - ./app:/react
