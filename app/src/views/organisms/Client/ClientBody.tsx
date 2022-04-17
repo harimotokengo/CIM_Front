@@ -3,8 +3,8 @@ import { useCallback, useState } from 'react'
 import Flex from '../../atoms/Flex'
 import Title from '../../atoms/Title'
 import LargeButton from '../../molecules/Button/LargeButton'
-import CorpForm from './Corp'
-import PersonalForm from './Personal'
+import CorpForm from './Corp/Profile'
+import PersonalForm from './Personal/Profile'
 
 const views = ['個人', '法人', '問い合わせ']
 
@@ -28,7 +28,8 @@ const ClientBody = () => {
       <Title>クライアント登録</Title>
       <Flex container flexDirection="row" gap="10px">
         {views.map((x, i) => (
-          <LargeButton variant={view === i ? 'select' : 'secondary'} label={x} onClick={() => setView(i)} />
+          // eslint-disable-next-line react/no-array-index-key
+          <LargeButton key={i} variant={view === i ? 'select' : 'secondary'} label={x} onClick={() => setView(i)} />
         ))}
       </Flex>
       <CurrentView />

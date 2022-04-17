@@ -1,33 +1,36 @@
 import arrowClockwise from '../../../../assets/images/arrow_clockwise.svg'
 import Flex from '../../../atoms/Flex'
-import { Input } from '../../../atoms/Input'
+import { InputWithLabel } from '../../../atoms/Input/InputWithLabel'
 import Label from '../../../atoms/Label'
-import AddressCard from '../components/AddressCard'
-import PhoneCard from '../components/PhoneCard'
+import Title from '../../../atoms/Title'
+import AddressCard from '../common/AddressCard'
+import EmailCard from '../common/EmailCard'
+import { NameForm } from '../common/NameForm'
+import PhoneCard from '../common/PhoneCard'
 
 const arrowClockwiseIcon = <img alt="arrowClockwise" src={arrowClockwise} style={{ width: '21px', height: '21px' }} />
 
-const CorpForm = () => {
+const CorpProfile = () => {
   const onValueChange = () => console.log('onValueChanged')
 
   return (
     <>
       <Flex layout="equal-columns" gap="24px" style={{ width: '534px' }}>
-        <Input label="企業名" value="" onValueChange={onValueChange} />
+        <InputWithLabel label="企業名" value="" onValueChange={onValueChange} />
       </Flex>
       <Flex layout="equal-columns" gap="24px" style={{ width: '534px' }}>
-        <Input label="かな" value="" onValueChange={onValueChange} />
+        <InputWithLabel label="かな" value="" onValueChange={onValueChange} />
       </Flex>
       <Label variant="icon" icon={arrowClockwiseIcon}>
         コンフリクトチェック
       </Label>
+      <Title variant="sub">代表者</Title>
+      <NameForm />
       <PhoneCard />
-      <Input label="案件区分" value="" style={{ width: '200px' }} onValueChange={onValueChange} />
-      <Input label="ステータス" value="" style={{ width: '200px' }} onValueChange={onValueChange} />
-      <Input label="共有" value="" style={{ width: '200px' }} onValueChange={onValueChange} />
+      <EmailCard />
       <AddressCard />
     </>
   )
 }
 
-export default CorpForm
+export default CorpProfile

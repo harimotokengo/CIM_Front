@@ -8,6 +8,11 @@ export const StyledFlexItem = styled.div<FlexItemProps>`
   flex-grow: ${props => (props.stretch ? 1 : 0)};
   flex-shrink: ${props => (props.stretch ? 1 : 0)};
   width: ${props => props.width};
+
+  * {
+    width: ${props => props.width};
+  }
+
   ${baseStyles};
   ${baseSpacing};
 `

@@ -1,22 +1,22 @@
 import { HTMLAttributes, useState } from 'react'
 
 import { BaseProps } from '../Base'
-import { StyledInput } from './Styled'
+import { StyledSelect } from './Styled'
 
-export interface InputProps extends Omit<HTMLAttributes<HTMLInputElement>, 'css'>, BaseProps {
+export interface SelectProps extends Omit<HTMLAttributes<HTMLSelectElement>, 'css'>, BaseProps {
   value: string
   onValueChange?: (value: string) => void
 }
 
-export const Input = (props: InputProps) => {
+export const Select = (props: SelectProps) => {
   const { value, onValueChange, ...rest } = props
 
   const [text, setText] = useState<string>(value)
 
-  const onChange = (element: HTMLInputElement) => {
+  const onChange = (element: HTMLSelectElement) => {
     setText(element.value)
     if (onValueChange) onValueChange(element.value)
   }
 
-  return <StyledInput value={text} onChange={e => onChange(e.currentTarget)} {...rest} />
+  return <StyledSelect value={text} onChange={e => onChange(e.currentTarget)} {...rest} />
 }

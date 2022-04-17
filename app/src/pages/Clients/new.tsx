@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Flex from '../../../views/atoms/Flex'
-import { Main } from '../../../views/atoms/Main'
-import ClientBody from '../../../views/organisms/Client/ClientBody'
-import ClientFooter from '../../../views/organisms/Client/ClientFooter'
+import Flex from '../../views/atoms/Flex'
+import { Main } from '../../views/atoms/Main'
+import ClientBody from '../../views/organisms/Client/ClientBody'
+import ClientFooter from '../../views/organisms/Client/ClientFooter'
 
 const Client: React.FC = () => (
   <>

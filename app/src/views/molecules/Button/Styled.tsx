@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import Button from "../../atoms/Button";
+import Button from '../../atoms/Button'
 
 export const StyledLargeButton = styled(Button)`
   font-family: Noto Sans JP;

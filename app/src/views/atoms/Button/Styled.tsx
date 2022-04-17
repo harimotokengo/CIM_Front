@@ -40,7 +40,6 @@ export const StyledButton = styled.button<ButtonProps>`
 export const StyledPrimaryButton = css<ButtonProps>`
   color: #ffffff;
   background: #f94144;
-
 `
 
 export const StyledSecondaryButton = css<ButtonProps>`

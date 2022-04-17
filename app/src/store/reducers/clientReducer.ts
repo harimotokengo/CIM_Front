@@ -41,7 +41,6 @@ export default (state = initialState, action: ClientActions): ClientState => {
       return {
         ...state,
         pending: false,
-        client: initialState.client,
         error: action.payload.error,
       }
     // Local

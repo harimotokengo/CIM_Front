@@ -4,6 +4,7 @@ import { baseSpacing, baseStyles } from '../Base'
 import { CardProps } from '.'
 
 export const StyledCard = styled.div<CardProps>`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -23,4 +24,10 @@ export const StyledCard = styled.div<CardProps>`
 
   ${baseSpacing}
   ${baseStyles}
+
+  > .card-close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
 `
