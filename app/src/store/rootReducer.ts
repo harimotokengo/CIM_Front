@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
+import { reducer as reduxFormReducer } from 'redux-form'
 
 import clientReducer from './reducers/clientReducer'
 
 const rootReducer = combineReducers({
+  form: reduxFormReducer,
   client: clientReducer,
 })
 

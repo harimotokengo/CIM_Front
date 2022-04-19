@@ -1,36 +1,25 @@
-import arrowClockwise from '../../../../assets/images/arrow_clockwise.svg'
+import { Field, FieldArray } from 'redux-form'
+
 import Flex from '../../../atoms/Flex'
-import { InputWithLabel } from '../../../atoms/Input/InputWithLabel'
-import Label from '../../../atoms/Label'
-import Title from '../../../atoms/Title'
-import AddressCard from '../common/AddressCard'
-import EmailCard from '../common/EmailCard'
-import { NameForm } from '../common/NameForm'
-import PhoneCard from '../common/PhoneCard'
+import { ReduxFormInput } from '../../../atoms/ReduxForm/Input'
+import { ReduxFormTextArea } from '../../../atoms/ReduxForm/TextArea'
+import AddressCard from '../../../molecules/ReduxForm/Card/AddressCard'
+import EmailCard from '../../../molecules/ReduxForm/Card/EmailCard'
+import PhoneCard from '../../../molecules/ReduxForm/Card/PhoneCard'
+import { BirthInput } from '../../../molecules/ReduxForm/Input/BirthInput'
 
-const arrowClockwiseIcon = <img alt="arrowClockwise" src={arrowClockwise} style={{ width: '21px', height: '21px' }} />
-
-const CorpProfile = () => {
-  const onValueChange = () => console.log('onValueChanged')
-
-  return (
-    <>
-      <Flex layout="equal-columns" gap="24px" style={{ width: '534px' }}>
-        <InputWithLabel label="企業名" value="" onValueChange={onValueChange} />
-      </Flex>
-      <Flex layout="equal-columns" gap="24px" style={{ width: '534px' }}>
-        <InputWithLabel label="かな" value="" onValueChange={onValueChange} />
-      </Flex>
-      <Label variant="icon" icon={arrowClockwiseIcon}>
-        コンフリクトチェック
-      </Label>
-      <Title variant="sub">代表者</Title>
-      <NameForm />
-      <PhoneCard />
-      <EmailCard />
-      <AddressCard />
-    </>
-  )
-}
+const CorpProfile = () => (
+  <Flex container flexDirection="column" gap="24px" style={{ width: '534px' }}>
+    <Field name="name" label="企業名" component={ReduxFormInput} />
+    <Field name="name_kana" label="かな" component={ReduxFormInput} />
+    <Field name="birth_date" label="設立年月日" component={BirthInput} />
+    <Field name="indentification_number" label="識別番号" component={ReduxFormInput} />
+    <Field name="profile" label="特記事項" component={ReduxFormTextArea} />
+    <FieldArray label="電話番号" name="contact_phone_numbers_attributes" component={PhoneCard} />
+    <FieldArray label="メールアドレス" name="contact_emails_attributes" component={EmailCard} />
+    <FieldArray label="住所" name="contact_addresses_attributes" component={AddressCard} />
+    <Field name="client_type_id" type="hidden" component="input" />
+  </Flex>
+)
 
 export default CorpProfile

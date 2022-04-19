@@ -18,7 +18,7 @@ export const Button = (props: ButtonProps) => {
   const { className, tag, icon, label, disabled, ...rest } = props
 
   return (
-    <StyledButton className={className || ''} as={tag} aria-label={label} disabled={disabled} {...rest}>
+    <StyledButton className={className || ''} as={tag} aria-label={label} disabled={disabled} type="button" {...rest}>
       {icon && <span className="ch-icon">{icon}</span>}
       <span className="ch-label">{label}</span>
     </StyledButton>

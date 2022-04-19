@@ -1,4 +1,36 @@
-import { FETCH_CLIENT_FAILURE, FETCH_CLIENT_REQUEST, FETCH_CLIENT_SUCCESS, SET_CLIENT } from '../actions/clientAction'
+import {
+  FETCH_CLIENT_FAILURE,
+  FETCH_CLIENT_REQUEST,
+  FETCH_CLIENT_SUCCESS,
+  POST_CLIENT_FAILURE,
+  POST_CLIENT_REQUEST,
+  POST_CLIENT_SUCCESS,
+} from '../actions/clientAction'
+
+export interface IAddress {
+  id?: number
+  category: string
+  memo: string
+  post_code: string
+  prefecture: string
+  address: string
+  send_by_personal: string
+}
+
+export interface IEmail {
+  id?: number
+  category: string
+  email: string
+  memo: string
+}
+
+export interface IPhoneNumber {
+  id?: number
+  category: string
+  phone_number: string
+  memo: string
+  extension_number: string
+}
 
 export interface IClient {
   id?: number
@@ -13,37 +45,9 @@ export interface IClient {
   birth_date: string
   client_type_id: string
   archive: boolean
-  contact_addresses_attributes?: [
-    {
-      id: number
-      category: string
-      memo: string
-      post_code: string
-      prefecture: string
-      address: string
-      send_by_personal: string
-      _destroy: boolean
-    }
-  ]
-  contact_emails_attributes?: [
-    {
-      id: number
-      category: string
-      email: string
-      memo: string
-      _destroy: boolean
-    }
-  ]
-  contact_phone_numbers_attributes?: [
-    {
-      id: number
-      category: string
-      phone_number: string
-      memo: string
-      extension_number: string
-      _destroy: boolean
-    }
-  ]
+  contact_addresses_attributes?: IAddress[]
+  contact_emails_attributes?: IEmail[]
+  contact_phone_numbers_attributes?: IPhoneNumber[]
   // matters_attributes: [
   //   {
   //     id: number
@@ -143,7 +147,7 @@ export interface ClientState {
   error: string | null
 }
 
-// API
+// fetch
 export interface FetchClientSuccessPayload {
   client: IClient
 }
@@ -166,14 +170,33 @@ export type FetchClientFailure = {
   payload: FetchClientFailurePayload
 }
 
-// Local
-export interface SetClientPayload {
+// post
+export interface PostClientPayload {
   client: IClient
 }
 
-export type SetClient = {
-  type: typeof SET_CLIENT
-  payload: SetClientPayload
+export interface PostClientFailurePayload {
+  error: string
 }
 
-export type ClientActions = FetchClientRequest | FetchClientSuccess | FetchClientFailure | SetClient
+export type PostClientRequest = {
+  type: typeof POST_CLIENT_REQUEST
+  payload: PostClientPayload
+}
+
+export type PostClientSuccess = {
+  type: typeof POST_CLIENT_SUCCESS
+}
+
+export type PostClientFailure = {
+  type: typeof POST_CLIENT_FAILURE
+  payload: PostClientFailurePayload
+}
+
+export type ClientActions =
+  | FetchClientRequest
+  | FetchClientSuccess
+  | FetchClientFailure
+  | PostClientRequest
+  | PostClientSuccess
+  | PostClientFailure
