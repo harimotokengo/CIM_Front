@@ -8,12 +8,16 @@ type ReduxFormInputProps = {
 }
 
 export const ReduxFormInput = (props: WrappedFieldProps & ReduxFormInputProps) => {
-  const { label, input } = props
+  const {
+    label,
+    input,
+    meta: { touched, error },
+  } = props
 
   return (
     <StyledInputWrapper>
       <StyledInputLabel>{label}</StyledInputLabel>
-      <StyledInput {...input} />
+      <StyledInput isError={touched && error} {...input} />
     </StyledInputWrapper>
   )
 }

@@ -2,6 +2,9 @@ import {
   FETCH_CLIENT_FAILURE,
   FETCH_CLIENT_REQUEST,
   FETCH_CLIENT_SUCCESS,
+  PATCH_CLIENT_FAILURE,
+  PATCH_CLIENT_REQUEST,
+  PATCH_CLIENT_SUCCESS,
   POST_CLIENT_FAILURE,
   POST_CLIENT_REQUEST,
   POST_CLIENT_SUCCESS,
@@ -15,6 +18,7 @@ export interface IAddress {
   prefecture: string
   address: string
   send_by_personal: string
+  _destroy?: boolean
 }
 
 export interface IEmail {
@@ -22,6 +26,7 @@ export interface IEmail {
   category: string
   email: string
   memo: string
+  _destroy?: boolean
 }
 
 export interface IPhoneNumber {
@@ -30,6 +35,7 @@ export interface IPhoneNumber {
   phone_number: string
   memo: string
   extension_number: string
+  _destroy?: boolean
 }
 
 export interface IClient {
@@ -193,6 +199,29 @@ export type PostClientFailure = {
   payload: PostClientFailurePayload
 }
 
+// patch
+export interface PatchClientPayload {
+  client: IClient
+}
+
+export interface PatchClientFailurePayload {
+  error: string
+}
+
+export type PatchClientRequest = {
+  type: typeof PATCH_CLIENT_REQUEST
+  payload: PatchClientPayload
+}
+
+export type PatchClientSuccess = {
+  type: typeof PATCH_CLIENT_SUCCESS
+}
+
+export type PatchClientFailure = {
+  type: typeof PATCH_CLIENT_FAILURE
+  payload: PatchClientFailurePayload
+}
+
 export type ClientActions =
   | FetchClientRequest
   | FetchClientSuccess
@@ -200,3 +229,6 @@ export type ClientActions =
   | PostClientRequest
   | PostClientSuccess
   | PostClientFailure
+  | PatchClientRequest
+  | PatchClientSuccess
+  | PatchClientFailure

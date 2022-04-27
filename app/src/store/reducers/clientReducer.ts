@@ -4,6 +4,9 @@ import {
   FETCH_CLIENT_FAILURE,
   FETCH_CLIENT_REQUEST,
   FETCH_CLIENT_SUCCESS,
+  PATCH_CLIENT_FAILURE,
+  PATCH_CLIENT_REQUEST,
+  PATCH_CLIENT_SUCCESS,
   POST_CLIENT_FAILURE,
   POST_CLIENT_REQUEST,
   POST_CLIENT_SUCCESS,
@@ -63,6 +66,23 @@ export default (state = initialState, action: ClientActions): ClientState => {
         error: null,
       }
     case POST_CLIENT_FAILURE:
+      return {
+        ...state,
+        error: action.payload.error,
+      }
+    // patch
+    case PATCH_CLIENT_REQUEST:
+      return {
+        ...state,
+        pending: true,
+      }
+    case PATCH_CLIENT_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        error: null,
+      }
+    case PATCH_CLIENT_FAILURE:
       return {
         ...state,
         error: action.payload.error,

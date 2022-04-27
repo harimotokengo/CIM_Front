@@ -4,7 +4,13 @@ import {
   FetchClientRequest,
   FetchClientSuccess,
   FetchClientSuccessPayload,
+  PatchClientFailure,
+  PatchClientFailurePayload,
+  PatchClientPayload,
+  PatchClientRequest,
+  PatchClientSuccess,
   PostClientFailure,
+  PostClientFailurePayload,
   PostClientPayload,
   PostClientRequest,
   PostClientSuccess,
@@ -16,9 +22,14 @@ export const FETCH_CLIENT_SUCCESS = 'FETCH_CLIENT_SUCCESS'
 export const FETCH_CLIENT_FAILURE = 'FETCH_CLIENT_FAILURE'
 
 // post
-export const POST_CLIENT_REQUEST = 'SET_CLIENT_REQUEST'
-export const POST_CLIENT_SUCCESS = 'SET_CLIENT_SUCCESS'
-export const POST_CLIENT_FAILURE = 'SET_CLIENT_FAILURE'
+export const POST_CLIENT_REQUEST = 'POST_CLIENT_REQUEST'
+export const POST_CLIENT_SUCCESS = 'POST_CLIENT_SUCCESS'
+export const POST_CLIENT_FAILURE = 'POST_CLIENT_FAILURE'
+
+// patch
+export const PATCH_CLIENT_REQUEST = 'PATCH_CLIENT_REQUEST'
+export const PATCH_CLIENT_SUCCESS = 'PATCH_CLIENT_SUCCESS'
+export const PATCH_CLIENT_FAILURE = 'PATCH_CLIENT_FAILURE'
 
 export const fetchClientRequest = (): FetchClientRequest => ({
   type: FETCH_CLIENT_REQUEST,
@@ -43,7 +54,21 @@ export const postClientSuccess = (): PostClientSuccess => ({
   type: POST_CLIENT_SUCCESS,
 })
 
-export const postClientFailure = (payload: FetchClientFailurePayload): PostClientFailure => ({
+export const postClientFailure = (payload: PostClientFailurePayload): PostClientFailure => ({
   type: POST_CLIENT_FAILURE,
+  payload,
+})
+
+export const patchClientRequest = (payload: PatchClientPayload): PatchClientRequest => ({
+  type: PATCH_CLIENT_REQUEST,
+  payload,
+})
+
+export const patchClientSuccess = (): PatchClientSuccess => ({
+  type: PATCH_CLIENT_SUCCESS,
+})
+
+export const patchClientFailure = (payload: PatchClientFailurePayload): PatchClientFailure => ({
+  type: PATCH_CLIENT_FAILURE,
   payload,
 })

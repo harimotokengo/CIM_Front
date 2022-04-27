@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+interface InputProps {
+  isError: boolean
+}
+
 export const StyledInputWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,7 +19,7 @@ export const StyledInputLabel = styled.label`
   margin-bottom: 5px;
 `
 
-export const StyledInput = styled.input`
+export const StyledInput = styled.input<InputProps>`
   font-family: 'Noto Sans JP';
   font-style: normal;
   font-weight: 400;
@@ -24,7 +28,7 @@ export const StyledInput = styled.input`
   color: #343a40;
 
   background: #ffffff;
-  border: 1px solid #dedede;
+  border: ${props => (props.isError ? '2px solid #ff0000' : '1px solid #dedede')};
   box-sizing: border-box;
   border-radius: 4px;
 

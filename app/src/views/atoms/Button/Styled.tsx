@@ -32,6 +32,7 @@ export const StyledButton = styled.button<ButtonProps>`
   ${props => props.variant === 'primary' && StyledPrimaryButton}
   ${props => props.variant === 'secondary' && StyledSecondaryButton}
   ${props => props.variant === 'select' && StyledGreenButton}
+  ${props => props.variant === 'edit' && StyledEditButton}
 
   ${baseSpacing}
   ${baseStyles}
@@ -50,4 +51,9 @@ export const StyledSecondaryButton = css<ButtonProps>`
 export const StyledGreenButton = css<ButtonProps>`
   color: #ffffff;
   background: #17a2b8;
+`
+
+export const StyledEditButton = css<ButtonProps>`
+  color: #ffffff;
+  background: #c2cfe0;
 `
