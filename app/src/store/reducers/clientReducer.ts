@@ -4,6 +4,9 @@ import {
   FETCH_CLIENT_FAILURE,
   FETCH_CLIENT_REQUEST,
   FETCH_CLIENT_SUCCESS,
+  FETCH_CLIENTS_FAILURE,
+  FETCH_CLIENTS_REQUEST,
+  FETCH_CLIENTS_SUCCESS,
   PATCH_CLIENT_FAILURE,
   PATCH_CLIENT_REQUEST,
   PATCH_CLIENT_SUCCESS,
@@ -28,6 +31,7 @@ const initialState: ClientState = {
     client_type_id: '',
     archive: false,
   },
+  clients: [],
   error: null,
 }
 
@@ -83,6 +87,24 @@ export default (state = initialState, action: ClientActions): ClientState => {
         error: null,
       }
     case PATCH_CLIENT_FAILURE:
+      return {
+        ...state,
+        error: action.payload.error,
+      }
+    // fetch clients
+    case FETCH_CLIENTS_REQUEST:
+      return {
+        ...state,
+        pending: true,
+      }
+    case FETCH_CLIENTS_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        clients: action.payload.clients,
+        error: null,
+      }
+    case FETCH_CLIENTS_FAILURE:
       return {
         ...state,
         error: action.payload.error,

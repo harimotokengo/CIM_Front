@@ -1,11 +1,11 @@
-import pencilSquare from '../../../assets/images/pencil_square.svg'
-import Navbar from '../../atoms/Navbar'
-import NavbarItem from '../../atoms/Navbar/NavbarItem'
-import NavbarLabel from '../../atoms/Navbar/NavbarLabel'
+import pencilSquare from '../../../../assets/images/pencil_square.svg'
+import Navbar from '../../../atoms/Navbar'
+import NavbarItem from '../../../atoms/Navbar/NavbarItem'
+import NavbarLabel from '../../../atoms/Navbar/NavbarLabel'
 
 const pencilIcon = <img alt="pencilSquare" src={pencilSquare} style={{ width: '21px', height: '21px' }} />
 
-const ClientNav = () => {
+const NavClient = () => {
   const handleClick = () => {
     console.log('click')
   }
@@ -21,4 +21,4 @@ const ClientNav = () => {
   )
 }
 
-export default ClientNav
+export default NavClient

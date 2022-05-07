@@ -1,7 +1,13 @@
 import {
   FetchClientFailure,
   FetchClientFailurePayload,
+  FetchClientPayload,
   FetchClientRequest,
+  FetchClientsFailure,
+  FetchClientsFailurePayload,
+  FetchClientsRequest,
+  FetchClientsSuccess,
+  FetchClientsSuccessPayload,
   FetchClientSuccess,
   FetchClientSuccessPayload,
   PatchClientFailure,
@@ -31,8 +37,14 @@ export const PATCH_CLIENT_REQUEST = 'PATCH_CLIENT_REQUEST'
 export const PATCH_CLIENT_SUCCESS = 'PATCH_CLIENT_SUCCESS'
 export const PATCH_CLIENT_FAILURE = 'PATCH_CLIENT_FAILURE'
 
-export const fetchClientRequest = (): FetchClientRequest => ({
+// fetch clients
+export const FETCH_CLIENTS_REQUEST = 'FETCH_CLIENTS_REQUEST'
+export const FETCH_CLIENTS_SUCCESS = 'FETCH_CLIENTS_SUCCESS'
+export const FETCH_CLIENTS_FAILURE = 'FETCH_CLIENTS_FAILURE'
+
+export const fetchClientRequest = (payload: FetchClientPayload): FetchClientRequest => ({
   type: FETCH_CLIENT_REQUEST,
+  payload,
 })
 
 export const fetchClientSuccess = (payload: FetchClientSuccessPayload): FetchClientSuccess => ({
@@ -70,5 +82,19 @@ export const patchClientSuccess = (): PatchClientSuccess => ({
 
 export const patchClientFailure = (payload: PatchClientFailurePayload): PatchClientFailure => ({
   type: PATCH_CLIENT_FAILURE,
+  payload,
+})
+
+export const fetchClientsRequest = (): FetchClientsRequest => ({
+  type: FETCH_CLIENTS_REQUEST,
+})
+
+export const fetchClientsSuccess = (payload: FetchClientsSuccessPayload): FetchClientsSuccess => ({
+  type: FETCH_CLIENTS_SUCCESS,
+  payload,
+})
+
+export const fetchClientsFailure = (payload: FetchClientsFailurePayload): FetchClientsFailure => ({
+  type: FETCH_CLIENTS_FAILURE,
   payload,
 })

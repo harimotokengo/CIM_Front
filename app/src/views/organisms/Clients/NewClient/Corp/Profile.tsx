@@ -1,12 +1,12 @@
 import { Field, FieldArray } from 'redux-form'
 
-import Flex from '../../../atoms/Flex'
-import { ReduxFormInput } from '../../../atoms/ReduxForm/Input'
-import { ReduxFormTextArea } from '../../../atoms/ReduxForm/TextArea'
-import AddressCard from '../../../molecules/ReduxForm/Card/AddressCard'
-import EmailCard from '../../../molecules/ReduxForm/Card/EmailCard'
-import PhoneCard from '../../../molecules/ReduxForm/Card/PhoneCard'
-import { BirthInput } from '../../../molecules/ReduxForm/Input/BirthInput'
+import Flex from '../../../../atoms/Flex'
+import { ReduxFormInput } from '../../../../atoms/ReduxForm/Input'
+import { ReduxFormTextArea } from '../../../../atoms/ReduxForm/TextArea'
+import AddressCard from '../../../../molecules/ReduxForm/Card/AddressCard'
+import EmailCard from '../../../../molecules/ReduxForm/Card/EmailCard'
+import PhoneCard from '../../../../molecules/ReduxForm/Card/PhoneCard'
+import { BirthInput } from '../../../../molecules/ReduxForm/Input/BirthInput'
 
 const CorpProfile = () => (
   <Flex container flexDirection="column" gap="24px" style={{ width: '534px' }}>

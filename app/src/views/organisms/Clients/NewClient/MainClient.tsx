@@ -2,22 +2,26 @@ import { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { change } from 'redux-form'
 
-import { getErrorSelector, getPendingSelector } from '../../../store/selectors/clientSelector'
-import Button from '../../atoms/Button'
-import Flex from '../../atoms/Flex'
-import Footer from '../../atoms/Footer'
-import { Main } from '../../atoms/Main'
-import ClientForm from '../../atoms/ReduxForm/Form/ClientForm'
-import { ClientSubmitButton } from '../../atoms/ReduxForm/Submit/ClientSubmit'
+import { getErrorSelector, getPendingSelector } from '../../../../store/selectors/clientSelector'
+import Button from '../../../atoms/Button'
+import Flex from '../../../atoms/Flex'
+import Footer from '../../../atoms/Footer'
+import { Main } from '../../../atoms/Main'
+import ClientForm from '../../../atoms/ReduxForm/Form/ClientForm'
+import { ClientSubmitButton } from '../../../atoms/ReduxForm/Submit/ClientSubmit'
 // import Submit from '../../atoms/ReduxForm/Submit'
-import Title from '../../atoms/Title'
-import LargeButton from '../../molecules/Button/LargeButton'
+import Title from '../../../atoms/Title'
+import LargeButton from '../../../molecules/Button/LargeButton'
 import CorpForm from './Corp/Profile'
 import PersonalForm from './Personal/Profile'
 
+interface MainClientProps {
+  onCancel: () => void
+}
+
 const views = ['個人', '法人', '問い合わせ']
 
-const ClientBody = () => {
+const MainClient = ({ onCancel }: MainClientProps) => {
   const dispatch = useDispatch()
   const [view, setView] = useState(0)
   const [requesting, setRequesting] = useState(false)
@@ -48,6 +52,10 @@ const ClientBody = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [view])
 
+  const handleCancel = () => {
+    onCancel()
+  }
+
   return (
     <ClientForm>
       <Main>
@@ -72,7 +80,7 @@ const ClientBody = () => {
       </Main>
       <Footer>
         <Flex layout="fill-space-centered" gap="24px">
-          <Button variant="secondary" label="キャンセル" />
+          <Button variant="secondary" label="キャンセル" onClick={handleCancel}/>
           <ClientSubmitButton />
         </Flex>
       </Footer>
@@ -80,4 +88,4 @@ const ClientBody = () => {
   )
 }
 
-export default ClientBody
+export default MainClient

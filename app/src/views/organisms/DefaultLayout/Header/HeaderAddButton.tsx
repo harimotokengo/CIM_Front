@@ -15,8 +15,10 @@ export const HeaderAddButton = () => {
   }
 
   return (
-    <StyledHeaderAddButtonWrapper onClick={handleClick}>
-      <SVG width="40px" height="40px" src={plusCircleFill} color="#f94144" />
+    <StyledHeaderAddButtonWrapper>
+      <span onClick={handleClick}>
+        <SVG width="40px" height="40px" src={plusCircleFill} color="#f94144" />
+      </span>
       {showAddBox && <HeaderAddBox />}
     </StyledHeaderAddButtonWrapper>
   )

@@ -1,28 +1,26 @@
 import React, { Suspense } from 'react'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import Clients from './pages/Clients'
+import DefaultLayout from './layouts/DefaultLayout'
+// import ClientPage from './pages/Clients'
+import Login from './pages/Login'
 import Page404 from './pages/Page404'
-import Project from './pages/Project'
 
 const Home = React.lazy(() => import('./pages/Home'))
-const AddClient = React.lazy(() => import('./pages/Clients/Profile'))
-const EditClient = React.lazy(() => import('./pages/Project/Client'))
+const Clients = React.lazy(() => import('./pages/Clients/Clients'))
+const Client = React.lazy(() => import('./pages/Clients/Client'))
 
 const App: React.FC = () => (
   <Suspense fallback={<div>Loading... </div>}>
     <BrowserRouter>
       <Routes>
-        {/* <Route index element={<Home />} /> */}
-        <Route path="clients" element={<Clients />}>
-          <Route path="new" element={<AddClient />} />
+        <Route element={<DefaultLayout />}>
+          <Route index element={<Home />} />
+          <Route path="clients" element={<Clients />} />
+          <Route path="clients/:id" element={<Client />} />
         </Route>
-        <Route path="project" element={<Project />}>
-          <Route path="home" element={<Home />} />
-          <Route path="client" element={<EditClient />} />
-        </Route>
+        <Route path="login" element={<Login />} />
         <Route path="*" element={<Page404 />} />
-        <Route path="/" element={<Navigate to="/clients/new" />} />
       </Routes>
     </BrowserRouter>
   </Suspense>

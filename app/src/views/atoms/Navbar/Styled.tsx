@@ -8,7 +8,6 @@ import { NavbarItemProps } from './NavbarItem'
 export const StyledNavbar = styled(Flex)<NavbarProps>`
   display: flex;
   flex-direction: column;
-  height: 100vh;
   max-width: 100%;
   color: #39434d;
   background-color: #ffffff;

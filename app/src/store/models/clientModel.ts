@@ -2,6 +2,9 @@ import {
   FETCH_CLIENT_FAILURE,
   FETCH_CLIENT_REQUEST,
   FETCH_CLIENT_SUCCESS,
+  FETCH_CLIENTS_FAILURE,
+  FETCH_CLIENTS_REQUEST,
+  FETCH_CLIENTS_SUCCESS,
   PATCH_CLIENT_FAILURE,
   PATCH_CLIENT_REQUEST,
   PATCH_CLIENT_SUCCESS,
@@ -150,6 +153,7 @@ export interface IClient {
 export interface ClientState {
   pending: boolean
   client: IClient
+  clients: IClient[]
   error: string | null
 }
 
@@ -164,6 +168,7 @@ export interface FetchClientFailurePayload {
 
 export interface FetchClientRequest {
   type: typeof FETCH_CLIENT_REQUEST
+  payload: FetchClientPayload
 }
 
 export type FetchClientSuccess = {
@@ -222,6 +227,34 @@ export type PatchClientFailure = {
   payload: PatchClientFailurePayload
 }
 
+// fetch clients
+export interface FetchClientPayload {
+  client: Required<Pick<IClient, 'id'>>
+}
+
+export interface FetchClientsSuccessPayload {
+  clients: IClient[]
+}
+
+export interface FetchClientsFailurePayload {
+  error: string
+}
+
+export type FetchClientsRequest = {
+  type: typeof FETCH_CLIENTS_REQUEST
+}
+
+export type FetchClientsSuccess = {
+  type: typeof FETCH_CLIENTS_SUCCESS
+  payload: FetchClientsSuccessPayload
+}
+
+export type FetchClientsFailure = {
+  type: typeof FETCH_CLIENTS_FAILURE
+  payload: FetchClientsFailurePayload
+}
+
+
 export type ClientActions =
   | FetchClientRequest
   | FetchClientSuccess
@@ -232,3 +265,6 @@ export type ClientActions =
   | PatchClientRequest
   | PatchClientSuccess
   | PatchClientFailure
+  | FetchClientsRequest
+  | FetchClientsSuccess
+  | FetchClientsFailure

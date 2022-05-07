@@ -1,9 +1,11 @@
-import axios from 'axios'
 import { all, call, put, takeLatest } from 'typed-redux-saga'
 
 import {
   FETCH_CLIENT_REQUEST,
+  FETCH_CLIENTS_REQUEST,
   fetchClientFailure,
+  fetchClientsFailure,
+  fetchClientsSuccess,
   fetchClientSuccess,
   PATCH_CLIENT_REQUEST,
   patchClientFailure,
@@ -13,24 +15,48 @@ import {
   postClientSuccess,
 } from '../actions/clientAction'
 import {
+  FetchClientPayload,
+  FetchClientRequest,
   IClient,
   PatchClientPayload,
   PatchClientRequest,
   PostClientPayload,
   PostClientRequest,
 } from '../models/clientModel'
-import { baseURL } from '.'
+import { apiInstance, baseURL } from '.'
 
 const path = '/clients'
 
-const getClients = () => axios.get<IClient>(`${baseURL}${path}/105`)
-const postClient = (payload: PostClientPayload) => axios.post<IClient>(`${baseURL}${path}`, payload)
+const getClient = (payload: FetchClientPayload) => apiInstance.get<IClient>(`${baseURL}${path}/${payload.client.id}`)
+const getClients = () => apiInstance.get<IClient[]>(`${baseURL}${path}`)
+const postClient = (payload: PostClientPayload) => apiInstance.post<IClient>(`${baseURL}${path}`, payload)
 const patchClient = (payload: PatchClientPayload) =>
-  axios.patch<IClient>(`${baseURL}${path}/${payload.client.id!}`, payload)
+  apiInstance.patch<IClient>(`${baseURL}${path}/${payload.client.id!}`, payload)
 
-function* fetchClientSaga() {
+function* fetchClientsSaga() {
   try {
     const response = yield* call(getClients)
+    if (response.status !== 200) {
+      fetchClientsFailure({ error: response.statusText })
+    }
+    yield* put(
+      fetchClientsSuccess({
+        clients: response.data,
+      })
+    )
+  } catch (e: any) {
+    yield* put(
+      fetchClientsFailure({
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+        error: e.message,
+      })
+    )
+  }
+}
+
+function* fetchClientSaga(action: FetchClientRequest) {
+  try {
+    const response = yield* call(getClient, action.payload)
     if (response.status !== 200) {
       fetchClientFailure({ error: response.statusText })
     }
@@ -87,6 +113,7 @@ function* patchClientSaga(action: PatchClientRequest) {
 
 function* clientSaga() {
   yield* all([
+    takeLatest(FETCH_CLIENTS_REQUEST, fetchClientsSaga),
     takeLatest(FETCH_CLIENT_REQUEST, fetchClientSaga),
     takeLatest(POST_CLIENT_REQUEST, postClientSaga),
     takeLatest(PATCH_CLIENT_REQUEST, patchClientSaga),

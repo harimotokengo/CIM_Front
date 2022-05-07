@@ -15,7 +15,7 @@ import EmailCard from '../../../molecules/ReduxForm/Card/EmailCard'
 import PhoneCard from '../../../molecules/ReduxForm/Card/PhoneCard'
 import { BirthInput } from '../../../molecules/ReduxForm/Input/BirthInput'
 
-const PersonalProfileEdit = () => {
+const ClientForm = () => {
   const formState = useSelector((state: AppState) => state.form)
   const [age, setAge] = useState<number | null>(null)
   const [birthdayProperty, setBirthdayProperty] = useState<any | null>(null)
@@ -62,4 +62,4 @@ const PersonalProfileEdit = () => {
   )
 }
 
-export default PersonalProfileEdit
+export default ClientForm

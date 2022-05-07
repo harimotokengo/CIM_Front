@@ -2188,6 +2188,15 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.1.tgz#20f18294f797f2209b5f65c8e3b5c8e8261d127c"
   integrity sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
 
+"@types/styled-components@*":
+  version "5.1.25"
+  resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-5.1.25.tgz#0177c4ab5fa7c6ed0565d36f597393dae3f380ad"
+  integrity sha512-fgwl+0Pa8pdkwXRoVPP9JbqF0Ivo9llnmsm+7TCI330kbPIFd9qv1Lrhr37shf4tnxCOSu+/IgqM7uJXLWZZNQ==
+  dependencies:
+    "@types/hoist-non-react-statics" "*"
+    "@types/react" "*"
+    csstype "^3.0.2"
+
 "@types/styled-components@^5.1.24":
   version "5.1.24"
   resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-5.1.24.tgz#b52ae677f03ea8a6018aa34c6c96b7018b7a3571"
@@ -2196,6 +2205,14 @@
     "@types/hoist-non-react-statics" "*"
     "@types/react" "*"
     csstype "^3.0.2"
+
+"@types/styled-react-modal@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@types/styled-react-modal/-/styled-react-modal-1.2.2.tgz#e2937ffc4b052c2329dc712ea6d7ec22b1eeffc9"
+  integrity sha512-Xiqdh6Wi0yegOK98rjO1Yrsy4bC+eMVkd6n2i23GSh8lgYCicZaMDYgX7vEil5LQuOBkfnyh+W6R+G0eIoTAbw==
+  dependencies:
+    "@types/react" "*"
+    "@types/styled-components" "*"
 
 "@types/styled-system@^5.1.15":
   version "5.1.15"
@@ -8374,6 +8391,13 @@ styled-components@^5.3.5:
     hoist-non-react-statics "^3.0.0"
     shallowequal "^1.1.0"
     supports-color "^5.5.0"
+
+styled-react-modal@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/styled-react-modal/-/styled-react-modal-3.0.0.tgz#cbba979d0c425c6fa6274f8a3703e1a44738dc2d"
+  integrity sha512-Wj5dx2RuibwWLX7aMEY0EzfY6e37w9oQbg7OG9vJskhsY8CqTL3wG3jdEddXxwf5Nj0m/k50JvCGjXugTXx4wQ==
+  dependencies:
+    prop-types "^15.7.2"
 
 styled-system@^5.1.5:
   version "5.1.5"

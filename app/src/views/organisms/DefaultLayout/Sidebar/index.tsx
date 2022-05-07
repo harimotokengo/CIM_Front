@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import bell from '../../../../assets/images/bell.svg'
@@ -14,6 +14,8 @@ import personPlus from '../../../../assets/images/person_plus.svg'
 import personSquare from '../../../../assets/images/person_square.svg'
 import plusCircle from '../../../../assets/images/plus_circle.svg'
 import substract from '../../../../assets/images/substract.svg'
+import Modal, { ModalHandles } from '../../../atoms/Modal'
+import NewClient from '../../Clients/NewClient'
 import SidebarBottom from './SidebarBottom'
 import SidebarContainer from './SidebarContainer'
 import SidebarHeader from './SidebarHeader'
@@ -51,9 +53,9 @@ const defaultSidebarItems: SidebarProps[] = [
       { icon: bellIcon, label: '受信ボックス', path: 'mailbox', isCurrent: false },
     ],
   },
-  { icon: substractIcon, label: '案件', path: 'matter', isCurrent: false },
-  { icon: clientIcon, label: 'クライアント', path: 'client', isCurrent: false },
-  { icon: customersIcon, label: '集客', path: 'customer', isCurrent: false },
+  { icon: substractIcon, label: '案件', path: 'matters', isCurrent: false },
+  { icon: clientIcon, label: 'クライアント', path: 'clients', isCurrent: false },
+  { icon: customersIcon, label: '集客', path: 'customers', isCurrent: false },
   { icon: statisticsIcon, label: '統計データ', path: 'statistics', isCurrent: false },
   { icon: addClientIcon, label: 'クライアント登録', path: 'clients/new', isCurrent: false },
   { icon: addMemberIcon, label: 'メンバー追加', path: 'members/new', isCurrent: false },
@@ -67,6 +69,7 @@ const defaultSidebarItems: SidebarProps[] = [
 ]
 
 const Sidebar = () => {
+  const ref = useRef<ModalHandles>(null)
   const navigate = useNavigate()
   const [isNarrow, setIsNarrow] = useState(false)
   const [sidebarItems, setSidebarItems] = useState(defaultSidebarItems)
@@ -87,13 +90,45 @@ const Sidebar = () => {
       }
     })
     setSidebarItems(newItems)
+    if (path === 'clients/new') {
+      ref.current?.toggleModal()
+      return
+    }
     navigate(path)
   }
 
   return (
-    <SidebarContainer isNarrow={isNarrow} headerComponent={<SidebarHeader onClick={() => setIsNarrow(!isNarrow)} />}>
-      {sidebarItems.map(x => {
-        if (!x.children) {
+    <>
+      <SidebarContainer isNarrow={isNarrow} headerComponent={<SidebarHeader onClick={() => setIsNarrow(!isNarrow)} />}>
+        {sidebarItems.map(x => {
+          if (!x.children) {
+            return (
+              <SidebarItem
+                key={x.path}
+                icon={x.icon}
+                label={x.label!}
+                path={x.path!}
+                isCurrent={x.isCurrent!}
+                onClick={handleItemClick}
+              />
+            )
+          }
+          if (x.isBottom) {
+            return (
+              <SidebarBottom>
+                {x.children.map(y => (
+                  <SidebarItem
+                    key={y.path}
+                    icon={y.icon}
+                    label={y.label!}
+                    path={y.path!}
+                    isCurrent={y.isCurrent!}
+                    onClick={handleItemClick}
+                  />
+                ))}
+              </SidebarBottom>
+            )
+          }
           return (
             <SidebarItem
               key={x.path}
@@ -102,14 +137,10 @@ const Sidebar = () => {
               path={x.path!}
               isCurrent={x.isCurrent!}
               onClick={handleItemClick}
-            />
-          )
-        }
-        if (x.isBottom) {
-          return (
-            <SidebarBottom>
+            >
               {x.children.map(y => (
                 <SidebarItem
+                  sub
                   key={y.path}
                   icon={y.icon}
                   label={y.label!}
@@ -118,33 +149,14 @@ const Sidebar = () => {
                   onClick={handleItemClick}
                 />
               ))}
-            </SidebarBottom>
+            </SidebarItem>
           )
-        }
-        return (
-          <SidebarItem
-            key={x.path}
-            icon={x.icon}
-            label={x.label!}
-            path={x.path!}
-            isCurrent={x.isCurrent!}
-            onClick={handleItemClick}
-          >
-            {x.children.map(y => (
-              <SidebarItem
-                sub
-                key={y.path}
-                icon={y.icon}
-                label={y.label!}
-                path={y.path!}
-                isCurrent={y.isCurrent!}
-                onClick={handleItemClick}
-              />
-            ))}
-          </SidebarItem>
-        )
-      })}
-    </SidebarContainer>
+        })}
+      </SidebarContainer>
+      <Modal ref={ref}>
+        <NewClient onCancel={() => ref.current?.toggleModal()} />
+      </Modal>
+    </>
   )
 }
 

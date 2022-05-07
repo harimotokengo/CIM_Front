@@ -1,11 +1,11 @@
 import { Field, FieldArray /* GenericFieldArray */ } from 'redux-form'
 
-import Flex from '../../../atoms/Flex'
-import { ReduxFormInput } from '../../../atoms/ReduxForm/Input'
-import AddressCard from '../../../molecules/ReduxForm/Card/AddressCard'
-import EmailCard from '../../../molecules/ReduxForm/Card/EmailCard'
-import PhoneCard from '../../../molecules/ReduxForm/Card/PhoneCard'
-import { BirthInput } from '../../../molecules/ReduxForm/Input/BirthInput'
+import Flex from '../../../../atoms/Flex'
+import { ReduxFormInput } from '../../../../atoms/ReduxForm/Input'
+import AddressCard from '../../../../molecules/ReduxForm/Card/AddressCard'
+import EmailCard from '../../../../molecules/ReduxForm/Card/EmailCard'
+import PhoneCard from '../../../../molecules/ReduxForm/Card/PhoneCard'
+import { BirthInput } from '../../../../molecules/ReduxForm/Input/BirthInput'
 
 // const FieldArrayCustom = FieldArray as new () => GenericFieldArray<Field, IAddress>
 
