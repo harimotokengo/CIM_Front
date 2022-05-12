@@ -25,6 +25,7 @@ export const StyledNavbarItem = styled.div<Partial<NavbarItemProps>>`
   min-height: 67px;
   border-top: 1px solid rgba(191, 201, 210, 0.2);
   border-bottom: 1px solid rgba(191, 201, 210, 0.2);
+  background: ${props => (props.selected ? '#bfc9d233' : '#ffffff')};
 
   &:hover {
     cursor: pointer;

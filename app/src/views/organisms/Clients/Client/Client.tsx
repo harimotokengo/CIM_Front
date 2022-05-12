@@ -22,7 +22,7 @@ const Client = () => {
 
   useEffect(() => {
     if (!id) return
-    const payload: FetchClientPayload = { client: { id: parseInt(id, 10) }}
+    const payload: FetchClientPayload = { client: { id: parseInt(id, 10) } }
     dispatch(fetchClientRequest(payload))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

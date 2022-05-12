@@ -2,20 +2,20 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { WrappedFieldProps } from 'redux-form'
 
-import { Select } from './Select'
-import { SelectWrapper } from './SelectWrapper'
+import { Category, SelectKV } from '../../../atoms/ReduxForm/Select/SelectKV'
+import { SelectWrapper } from '../../../atoms/ReduxForm/Select/SelectWrapper'
 
 type ReduxFormSelectProps = {
   label: string
-  category: any[]
+  category: Category[]
 }
 
-export const ReduxFormSelect = (props: WrappedFieldProps & ReduxFormSelectProps) => {
+export const MatterSelect = (props: WrappedFieldProps & ReduxFormSelectProps) => {
   const { label, category, ...rest } = props
 
   return (
     <SelectWrapper label={label}>
-      <Select category={category} {...rest} />
+      <SelectKV category={category} {...rest} />
     </SelectWrapper>
   )
 }

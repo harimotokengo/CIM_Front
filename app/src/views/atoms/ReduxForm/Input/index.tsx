@@ -12,12 +12,13 @@ export const ReduxFormInput = (props: WrappedFieldProps & ReduxFormInputProps) =
     label,
     input,
     meta: { touched, error },
+    ...rest
   } = props
 
   return (
     <StyledInputWrapper>
       <StyledInputLabel>{label}</StyledInputLabel>
-      <StyledInput isError={touched && error} {...input} />
+      <StyledInput isError={touched && error} {...input} {...rest} />
     </StyledInputWrapper>
   )
 }

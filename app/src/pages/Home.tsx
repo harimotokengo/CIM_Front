@@ -9,7 +9,7 @@ const Home: React.FC = () => {
   const client = useSelector(getClientSelector)
 
   const handleClick = () => {
-    dispatch(fetchClientRequest({client: { id: 99 }}))
+    dispatch(fetchClientRequest({ client: { id: 99 } }))
   }
 
   return (

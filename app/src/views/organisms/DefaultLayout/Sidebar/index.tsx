@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
-import { useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import bell from '../../../../assets/images/bell.svg'
 import check from '../../../../assets/images/check.svg'
@@ -69,27 +69,33 @@ const defaultSidebarItems: SidebarProps[] = [
 ]
 
 const Sidebar = () => {
+  const location = useLocation()
   const ref = useRef<ModalHandles>(null)
   const navigate = useNavigate()
   const [isNarrow, setIsNarrow] = useState(false)
   const [sidebarItems, setSidebarItems] = useState(defaultSidebarItems)
 
-  const handleItemClick = (path: string) => {
+  useEffect(() => {
+    const splitPaths = location.pathname.split('/')
     const newItems: typeof sidebarItems = sidebarItems.map(x => {
       if (x.children) {
-        const newChildren = x.children.map(y => ({ ...y, isCurrent: y.path === path }))
+        const newChildren = x.children.map(y => ({ ...y, isCurrent: y.path === splitPaths[1] }))
         return {
           ...x,
-          isCurrent: x.path === path,
+          isCurrent: x.path === splitPaths[1],
           children: newChildren,
         }
       }
       return {
         ...x,
-        isCurrent: x.path === path,
+        isCurrent: x.path === splitPaths[1],
       }
     })
     setSidebarItems(newItems)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location])
+
+  const handleItemClick = (path: string) => {
     if (path === 'clients/new') {
       ref.current?.toggleModal()
       return

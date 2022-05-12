@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import {
-  LOGIN_FAILURE,
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-} from '../actions/sessionAction'
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from '../actions/sessionAction'
 import { SessionActions, SessionState } from '../models/sessionModel'
 
 const initialState: SessionState = {
+  user: {
+    id: 0,
+    email: '',
+  },
   pending: false,
   error: null,
 }
@@ -24,6 +24,7 @@ export default (state = initialState, action: SessionActions): SessionState => {
     case LOGIN_SUCCESS:
       return {
         ...state,
+        user: action.payload.user,
         pending: false,
         error: null,
       }

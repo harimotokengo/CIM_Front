@@ -14,6 +14,9 @@ import AddressCard from '../../../molecules/ReduxForm/Card/AddressCard'
 import EmailCard from '../../../molecules/ReduxForm/Card/EmailCard'
 import PhoneCard from '../../../molecules/ReduxForm/Card/PhoneCard'
 import { BirthInput } from '../../../molecules/ReduxForm/Input/BirthInput'
+import MatterForm from '../Matter/Matter'
+
+const required = (value: string | number) => (value || typeof value === 'number' ? undefined : 'Required')
 
 const ClientForm = () => {
   const formState = useSelector((state: AppState) => state.form)
@@ -34,12 +37,12 @@ const ClientForm = () => {
   return (
     <Flex container flexDirection="column" gap="24px" style={{ width: '534px' }}>
       <Flex layout="equal-columns" gap="24px">
-        <Field name="name" label="姓" component={ReduxFormInput} />
-        <Field name="first_name" label="名" component={ReduxFormInput} />
+        <Field name="name" label="姓" component={ReduxFormInput} validate={[required]} />
+        <Field name="first_name" label="名" component={ReduxFormInput} validate={[required]} />
       </Flex>
       <Flex layout="equal-columns" gap="24px">
-        <Field name="name_kana" label="せい" component={ReduxFormInput} />
-        <Field name="first_name_kana" label="めい" component={ReduxFormInput} />
+        <Field name="name_kana" label="せい" component={ReduxFormInput} validate={[required]} />
+        <Field name="first_name_kana" label="めい" component={ReduxFormInput} validate={[required]} />
       </Flex>
       <Flex layout="fill-space" gap="24px">
         <Field
@@ -58,6 +61,8 @@ const ClientForm = () => {
       <FieldArray label="メールアドレス" name="contact_emails_attributes" component={EmailCard} />
       <FieldArray label="住所" name="contact_addresses_attributes" component={AddressCard} />
       <Field name="client_type_id" type="hidden" component="input" />
+      {/* @ts-ignore */}
+      <FieldArray name="matters_attributes" component={MatterForm} />
     </Flex>
   )
 }

@@ -2,10 +2,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { forwardRef, useImperativeHandle, useState } from 'react'
 
-// import close from '../../../assets/images/close.svg'
+import close from '../../../assets/images/close.svg'
 import { StyledModal } from './Styled'
 
-// const closeIcon = <img alt="plusCircle" src={close} style={{ width: '21px', height: '21px' }} />
+const closeIcon = <img alt="close" src={close} style={{ width: '24px', height: '24px' }} />
 
 interface ModalProps {
   children: React.ReactNode | React.ReactNode[]
@@ -21,22 +21,17 @@ const Modal = forwardRef<ModalHandles, ModalProps>((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     toggleModal() {
-      console.log(isOpen)
-      console.log(!isOpen)
       setIsOpen(!isOpen)
     },
   }))
 
   return (
-    <div style={{ height: '80%' }}>
-      <StyledModal
-        isOpen={isOpen}
-        onBackgroundClick={() => setIsOpen(!isOpen)}
-        onEscapeKeydown={() => setIsOpen(!isOpen)}
-      >
-        {children}
-      </StyledModal>
-    </div>
+    <StyledModal isOpen={isOpen} onEscapeKeydown={() => setIsOpen(!isOpen)}>
+      {children}
+      <span className="modal-close" onClick={() => setIsOpen(false)}>
+        {closeIcon}
+      </span>
+    </StyledModal>
   )
 })
 

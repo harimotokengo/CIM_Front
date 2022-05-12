@@ -20,7 +20,11 @@ import {
   PostClientPayload,
   PostClientRequest,
   PostClientSuccess,
+  SetClient,
+  SetClientPayload,
 } from '../models/clientModel'
+
+export const SET_CLIENT = 'SET_CLIENT'
 
 // fetch
 export const FETCH_CLIENT_REQUEST = 'FETCH_CLIENT_REQUEST'
@@ -41,6 +45,11 @@ export const PATCH_CLIENT_FAILURE = 'PATCH_CLIENT_FAILURE'
 export const FETCH_CLIENTS_REQUEST = 'FETCH_CLIENTS_REQUEST'
 export const FETCH_CLIENTS_SUCCESS = 'FETCH_CLIENTS_SUCCESS'
 export const FETCH_CLIENTS_FAILURE = 'FETCH_CLIENTS_FAILURE'
+
+export const setClient = (payload: SetClientPayload): SetClient => ({
+  type: SET_CLIENT,
+  payload,
+})
 
 export const fetchClientRequest = (payload: FetchClientPayload): FetchClientRequest => ({
   type: FETCH_CLIENT_REQUEST,

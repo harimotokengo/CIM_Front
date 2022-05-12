@@ -16,8 +16,8 @@ export interface NavbarItemProps extends LabelProps {
   children?: ReactNode | ReactNode[]
 }
 
-export const NavbarItem = ({ label, icon, onClick, ...rest }: NavbarItemProps) => (
-  <StyledNavbarItem onClick={onClick}>
+export const NavbarItem = ({ label, icon, selected, onClick, ...rest }: NavbarItemProps) => (
+  <StyledNavbarItem onClick={onClick} selected={selected || false}>
     <StyledLabelWrapper>
       <Label icon={icon} variant="icon" {...rest}>
         {label}

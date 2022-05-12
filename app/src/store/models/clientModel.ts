@@ -11,6 +11,7 @@ import {
   POST_CLIENT_FAILURE,
   POST_CLIENT_REQUEST,
   POST_CLIENT_SUCCESS,
+  SET_CLIENT,
 } from '../actions/clientAction'
 
 export interface IAddress {
@@ -41,52 +42,34 @@ export interface IPhoneNumber {
   _destroy?: boolean
 }
 
-export interface IClient {
+export interface IMatterJoin {
+  id?: number
+  admin?: boolean
+  belong_side_id: number
+  office_id?: number
+  user_id?: number
+  _destroy?: boolean
+}
+
+export interface IFolderUrl {
   id?: number
   name: string
-  name_kana: string
-  first_name: string
-  first_name_kana: string
-  profile: string
-  maiden_name: string
-  maiden_name_kana: string
-  indentification_number: number
-  birth_date: string
-  client_type_id: string
-  archive: boolean
-  contact_addresses_attributes?: IAddress[]
-  contact_emails_attributes?: IEmail[]
-  contact_phone_numbers_attributes?: IPhoneNumber[]
-  // matters_attributes: [
-  //   {
-  //     id: number
-  //     user_id: string
-  //     matter_genre_id: number
-  //     service_price: string
-  //     folder_url: string
-  //     description: string
-  //     matter_status_id: string
-  //     start_date: string
-  //     finish_date: string
-  //     _destroy: boolean
-  //     matter_joins_attributes: [
-  //       {
-  //         id: number
-  //         belong_side_id: number
-  //         admin: boolean
-  //         office_id: number
-  //         user_id: string
-  //         _destroy: boolean
-  //       }
-  //     ]
-  //     folder_urls_attributes: [
-  //       {
-  //         id: number
-  //         name: string
-  //         url: string
-  //         _destroy: boolean
-  //       }
-  //     ]
+  url: string
+  _destroy?: boolean
+}
+
+export interface IMatter {
+  id?: number
+  user_id: number
+  matter_genre_id: number
+  // service_price: string
+  // description: string
+  matter_status_id: number
+  start_date: string
+  finish_date: string
+  _destroy?: boolean
+  matter_joins_attributes: IMatterJoin[]
+  folder_urls_attributes: IFolderUrl[]
   //     fees_attributes: [
   //       {
   //         id: number
@@ -146,8 +129,25 @@ export interface IClient {
   //         ]
   //       }
   //     ]
-  //   }
-  // ]
+}
+
+export interface IClient {
+  id?: number
+  name: string
+  name_kana: string
+  first_name: string
+  first_name_kana: string
+  profile: string
+  maiden_name: string
+  maiden_name_kana: string
+  indentification_number: number
+  birth_date: string
+  client_type_id: string
+  archive: boolean
+  contact_addresses_attributes?: IAddress[]
+  contact_emails_attributes?: IEmail[]
+  contact_phone_numbers_attributes?: IPhoneNumber[]
+  matters_attributes?: IMatter[]
 }
 
 export interface ClientState {
@@ -157,6 +157,10 @@ export interface ClientState {
   error: string | null
 }
 
+export interface SetClientPayload {
+  client: IClient
+}
+
 // fetch
 export interface FetchClientSuccessPayload {
   client: IClient
@@ -164,6 +168,11 @@ export interface FetchClientSuccessPayload {
 
 export interface FetchClientFailurePayload {
   error: string
+}
+
+export interface SetClient {
+  type: typeof SET_CLIENT
+  payload: SetClientPayload
 }
 
 export interface FetchClientRequest {
@@ -254,8 +263,8 @@ export type FetchClientsFailure = {
   payload: FetchClientsFailurePayload
 }
 
-
 export type ClientActions =
+  | SetClient
   | FetchClientRequest
   | FetchClientSuccess
   | FetchClientFailure

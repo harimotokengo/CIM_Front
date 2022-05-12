@@ -6,7 +6,15 @@ export const StyledModal = Modal.styled`
   justify-content: center;
   background-color: white;
 
-  min-width: 900px;
+  min-width: 1000px;
   min-height:500px;
   height: 90%;
+
+  position: relative;
+
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+  }
 `

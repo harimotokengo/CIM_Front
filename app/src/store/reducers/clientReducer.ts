@@ -13,6 +13,7 @@ import {
   POST_CLIENT_FAILURE,
   POST_CLIENT_REQUEST,
   POST_CLIENT_SUCCESS,
+  SET_CLIENT,
 } from '../actions/clientAction'
 import { ClientActions, ClientState } from '../models/clientModel'
 
@@ -30,6 +31,29 @@ const initialState: ClientState = {
     birth_date: '',
     client_type_id: '',
     archive: false,
+    matters_attributes: [
+      {
+        user_id: 0,
+        matter_genre_id: 0,
+        matter_status_id: 0,
+        start_date: '',
+        finish_date: '',
+        _destroy: false,
+        matter_joins_attributes: [
+          {
+            belong_side_id: 1,
+            _destroy: false,
+          },
+        ],
+        folder_urls_attributes: [
+          {
+            name: '',
+            url: '',
+            _destroy: false,
+          },
+        ],
+      },
+    ],
   },
   clients: [],
   error: null,
@@ -38,6 +62,11 @@ const initialState: ClientState = {
 // eslint-disable-next-line default-param-last
 export default (state = initialState, action: ClientActions): ClientState => {
   switch (action.type) {
+    case SET_CLIENT:
+      return {
+        ...state,
+        client: action.payload.client,
+      }
     // fetch
     case FETCH_CLIENT_REQUEST:
       return {
