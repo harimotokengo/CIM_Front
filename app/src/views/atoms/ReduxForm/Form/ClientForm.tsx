@@ -33,6 +33,7 @@ const initialClient: IClient = {
       matter_status_id: 0,
       start_date: '',
       finish_date: '',
+      updated_at: '',
       _destroy: false,
       matter_joins_attributes: [
         {

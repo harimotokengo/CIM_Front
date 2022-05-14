@@ -8,10 +8,11 @@ import { StyledMain } from './Styled'
 
 interface MainProps {
   id?: string
+  saveState?: boolean
   children: ReactNode
 }
 
-export const Main = ({ id, children }: MainProps) => {
+export const Main = ({ id, children, saveState = false }: MainProps) => {
   const dispatch = useDispatch()
 
   const handleScroll = (event: SyntheticEvent<HTMLDivElement>) => {
@@ -22,7 +23,12 @@ export const Main = ({ id, children }: MainProps) => {
   }
 
   return (
-    <StyledMain id={id} onScroll={handleScroll}>
+    <StyledMain
+      id={id}
+      onScroll={event => {
+        if (saveState) handleScroll(event)
+      }}
+    >
       {children}
     </StyledMain>
   )

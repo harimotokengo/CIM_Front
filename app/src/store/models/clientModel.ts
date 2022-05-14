@@ -67,6 +67,7 @@ export interface IMatter {
   matter_status_id: number
   start_date: string
   finish_date: string
+  updated_at: string
   _destroy?: boolean
   matter_joins_attributes: IMatterJoin[]
   folder_urls_attributes: IFolderUrl[]

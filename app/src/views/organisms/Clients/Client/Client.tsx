@@ -38,7 +38,7 @@ const Client = () => {
 
   return (
     <ClientFormEdit>
-      <Main>
+      <Main saveState>
         <Flex layout="fill-space-horizontal" justifyContent="center">
           <Flex container flexDirection="column" mt="20px" mb="20px" gap="20px">
             <ClientForm />

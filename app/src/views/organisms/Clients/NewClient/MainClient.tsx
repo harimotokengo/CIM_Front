@@ -64,7 +64,7 @@ const MainClient = ({ onCancel }: MainClientProps) => {
 
   return (
     <ClientForm>
-      <Main id="client-form-main">
+      <Main id="client-form-main" saveState>
         <Flex layout="fill-space-horizontal" justifyContent="center">
           <Flex container flexDirection="column" mt="20px" mb="20px" gap="20px">
             <ScrollElement name="profile" />
