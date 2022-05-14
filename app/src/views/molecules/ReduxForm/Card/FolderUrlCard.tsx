@@ -13,8 +13,8 @@ import Flex from '../../../atoms/Flex'
 import { FlexItem } from '../../../atoms/FlexItem'
 import Label from '../../../atoms/Label'
 import LabelUrl from '../../../atoms/Label/LabelUrl'
-import { ReduxFormInput } from '../../../atoms/ReduxForm/Input'
 import Title from '../../../atoms/Title'
+import { ReduxFormInput } from '../Input'
 
 const plusCircleIcon = <img alt="plusCircle" src={plusCircle} style={{ width: '21px', height: '21px' }} />
 
@@ -44,13 +44,13 @@ const FolderUrlCard = ({ label, fields }: WrappedFieldArrayProps<IFolderUrl> & F
           <></>
         ) : (
           // eslint-disable-next-line react/no-array-index-key
-          <Card key={i} width="534px" closeButton onClosed={() => handleClose(i)}>
-            <Flex container flexDirection="column" flexWrap="wrap" gap="10px" mb="10px">
+          <Card key={i} closeButton onClosed={() => handleClose(i)}>
+            <Flex flexDirection="column" flexWrap="wrap" gap="10px" mb="10px">
               <FlexItem width="auto">
                 <Field name={`${x}.name`} label="タイトル" component={ReduxFormInput} />
               </FlexItem>
               <FlexItem width="auto">
-                <Flex container flexDirection="row" alignItems="end" gap="10px">
+                <Flex flexDirection="row" alignItems="end" gap="10px">
                   <FlexItem width="auto">
                     {isEdit ? (
                       <Field name={`${x}.url`} label="URL" component={ReduxFormInput} />

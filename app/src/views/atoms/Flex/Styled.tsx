@@ -3,21 +3,29 @@ import styled, { css } from 'styled-components'
 import { baseSpacing, baseStyles } from '../Base'
 import { FlexProps } from '.'
 
-export const fillSpace = css`
+// 縦横いっぱい
+export const fill = css`
   display: flex;
   width: 100%;
   height: 100%;
 `
 
-export const fillSpaceHorizontal = css`
-  display: flex;
-  width: 100%;
+// 縦横いっぱい中央揃え
+export const fillCentered = css`
+  ${fill};
+  align-items: center;
   justify-content: center;
 `
 
-export const fillSpaceCentered = css`
-  ${fillSpace};
-  align-items: center;
+// 横いっぱい
+export const fillHorizontal = css`
+  display: flex;
+  width: 100%;
+`
+
+// 横いっぱい中央揃え
+export const fillHorizontalCentered = css`
+  ${fillHorizontal};
   justify-content: center;
 `
 
@@ -43,22 +51,23 @@ export const stack = css`
 `
 
 const layoutMap = {
-  'fill-space': fillSpace,
-  'fill-space-horizontal': fillSpaceHorizontal,
-  'fill-space-centered': fillSpaceCentered,
+  fill,
+  'fill-centered': fillCentered,
+  'fill-horizontal': fillHorizontal,
+  'fill-horizontal-centered': fillHorizontalCentered,
   'equal-columns': equalColumns,
   stack,
 }
 
 export const StyledFlex = styled.div<FlexProps>`
-  align-items: ${props => props.alignItems};
-  display: ${props => (props.container ? 'flex' : 'block')};
+  display: flex;
   flex: ${props => props.flex || ''};
   flex-basis: ${props => props.flexBasis};
   flex-direction: ${props => props.flexDirection};
   flex-grow: ${props => props.flexGrow || ''};
   flex-shrink: ${props => props.flexShrink};
   flex-wrap: ${props => props.flexWrap};
+  align-items: ${props => props.alignItems};
   justify-content: ${props => props.justifyContent};
   gap: ${props => props.gap};
 

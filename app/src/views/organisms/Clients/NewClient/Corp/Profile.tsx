@@ -3,12 +3,12 @@ import { useDispatch } from 'react-redux'
 import { change, Field, FieldArray } from 'redux-form'
 
 import Flex from '../../../../atoms/Flex'
-import { ReduxFormInput } from '../../../../atoms/ReduxForm/Input'
-import { ReduxFormTextArea } from '../../../../atoms/ReduxForm/TextArea'
 import AddressCard from '../../../../molecules/ReduxForm/Card/AddressCard'
 import EmailCard from '../../../../molecules/ReduxForm/Card/EmailCard'
 import PhoneCard from '../../../../molecules/ReduxForm/Card/PhoneCard'
+import { ReduxFormInput } from '../../../../molecules/ReduxForm/Input'
 import { BirthInput } from '../../../../molecules/ReduxForm/Input/BirthInput'
+import { ReduxFormTextArea } from '../../../../molecules/ReduxForm/TextArea'
 
 const CorpProfile = () => {
   const dispatch = useDispatch()
@@ -21,7 +21,7 @@ const CorpProfile = () => {
   }, [])
 
   return (
-    <Flex container flexDirection="column" gap="24px" style={{ width: '534px', marginBottom: '20px' }}>
+    <Flex flexDirection="column" gap="24px" style={{ width: '534px', marginBottom: '20px' }}>
       <Field name="name" label="企業名" component={ReduxFormInput} />
       <Field name="name_kana" label="かな" component={ReduxFormInput} />
       <Field name="birth_date" label="設立年月日" component={BirthInput} />

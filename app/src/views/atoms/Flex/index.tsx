@@ -5,10 +5,9 @@ import { FlexboxProps } from 'styled-system'
 import { BaseProps } from '../Base'
 import { StyledFlex } from './Styled'
 
-type Layout = 'fill-space' | 'fill-space-horizontal' | 'fill-space-centered' | 'equal-columns' | 'stack'
+type Layout = 'fill' | 'fill-centered' | 'fill-horizontal' | 'fill-horizontal-centered' | 'equal-columns' | 'stack'
 
 export interface FlexProps extends BaseProps, FlexboxProps {
-  container?: boolean
   flexShrink?: number
   layout?: Layout
   style?: {}
@@ -20,17 +19,16 @@ export const Flex: FC<FlexProps> = ({
   className,
   tag,
   alignItems = 'stretch',
-  container = false,
   flexBasis = 'auto',
   flexDirection = 'row',
   flexShrink = 1,
   flexWrap = 'nowrap',
   justifyContent = 'flex-start',
+  gap,
   ...props
 }) => (
   <StyledFlex
     alignItems={alignItems}
-    container={container}
     flexBasis={flexBasis}
     flexDirection={flexDirection}
     flexShrink={flexShrink}
@@ -38,6 +36,7 @@ export const Flex: FC<FlexProps> = ({
     justifyContent={justifyContent}
     as={tag}
     className={className || ''}
+    gap={gap}
     {...props}
   >
     {children}

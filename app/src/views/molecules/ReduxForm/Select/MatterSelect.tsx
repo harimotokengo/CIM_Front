@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { WrappedFieldProps } from 'redux-form'
 
-import { Category, SelectKV } from '../../../atoms/ReduxForm/Select/SelectKV'
-import { SelectWrapper } from '../../../atoms/ReduxForm/Select/SelectWrapper'
+import { Category, SelectKV } from './SelectKV'
+import { SelectWrapper } from './SelectWrapper'
 
 type ReduxFormSelectProps = {
   label: string

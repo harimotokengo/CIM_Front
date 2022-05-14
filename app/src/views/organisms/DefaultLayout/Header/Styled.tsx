@@ -163,7 +163,7 @@ export const StyledHeaderSearchBoxWrapper = styled.div`
 
   background: #ffffff;
   box-shadow: 0px 16px 48px rgba(0, 0, 0, 0.176);
-  border-radius: 4px;
+  border-radius: ${props => props.theme.radii.default};
 `
 
 export const StyledHeaderSearchContents = styled.div`
@@ -234,7 +234,7 @@ export const StyledHeaderAddBoxWrapper = styled.div`
 
   background: #ffffff;
   box-shadow: 0px 16px 48px rgba(0, 0, 0, 0.176);
-  border-radius: 4px;
+  border-radius: ${props => props.theme.radii.default};
 `
 
 export const StyledHeaderAddContents = styled.div`

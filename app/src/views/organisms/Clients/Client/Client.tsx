@@ -9,8 +9,8 @@ import Button from '../../../atoms/Button'
 import Flex from '../../../atoms/Flex'
 import Footer from '../../../atoms/Footer'
 import { Main } from '../../../atoms/Main'
-import ClientFormEdit from '../../../atoms/ReduxForm/Form/ClientFormEdit'
-import { ClientEditSubmitButton } from '../../../atoms/ReduxForm/Submit/ClientEditSubmit'
+import ClientFormEdit from '../../../molecules/ReduxForm/Form/ClientFormEdit'
+import { ClientEditSubmitButton } from '../../../molecules/ReduxForm/Submit/ClientEditSubmit'
 import ClientForm from './ClientForm'
 
 const Client = () => {
@@ -39,14 +39,14 @@ const Client = () => {
   return (
     <ClientFormEdit>
       <Main saveState>
-        <Flex layout="fill-space-horizontal" justifyContent="center">
-          <Flex container flexDirection="column" mt="20px" mb="20px" gap="20px">
+        <Flex layout="fill-horizontal" justifyContent="center">
+          <Flex flexDirection="column" mt="20px" mb="20px" gap="20px">
             <ClientForm />
           </Flex>
         </Flex>
       </Main>
       <Footer>
-        <Flex layout="fill-space-centered" gap="24px">
+        <Flex layout="fill-centered" gap="24px">
           <Button variant="secondary" label="キャンセル" />
           <ClientEditSubmitButton />
         </Flex>

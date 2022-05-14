@@ -7,8 +7,8 @@ import { IMatter } from '../../../../store/models/clientModel'
 import { getUserSelector } from '../../../../store/selectors/sessionSelector'
 import Flex from '../../../atoms/Flex'
 import { FlexItem } from '../../../atoms/FlexItem'
-import { ReduxFormInput } from '../../../atoms/ReduxForm/Input'
 import FolderUrlCard from '../../../molecules/ReduxForm/Card/FolderUrlCard'
+import { ReduxFormInput } from '../../../molecules/ReduxForm/Input'
 import { MatterSelect } from '../../../molecules/ReduxForm/Select/MatterSelect'
 import MatterJoin from './MatterJoin'
 
@@ -18,14 +18,18 @@ interface MatterStatus {
   showEndDate: boolean
 }
 
-const Matter = ({ fields }: WrappedFieldArrayProps<IMatter>) => {
+interface MatterProps {
+  isEdit?: boolean
+}
+
+const Matter = ({ fields, isEdit = false }: WrappedFieldArrayProps<IMatter> & MatterProps) => {
   const dispatch = useDispatch()
   const user = useSelector(getUserSelector)
   const [matterStatuses, setMatterStatuses] = useState<MatterStatus[]>([])
 
   useEffect(() => {
     fields.forEach((x, i) => {
-      if (fields.get(i).user_id !== 0) return
+      if (fields.get(i).user_id !== 0 && isEdit) return
       dispatch(change('client_form', `${x}.user_id`, user.id))
     })
     const newMatterStatuses = fields.map((_, i) => ({
@@ -59,7 +63,7 @@ const Matter = ({ fields }: WrappedFieldArrayProps<IMatter>) => {
   return (
     <>
       {fields.map((x, i) => (
-        <Flex container flexDirection="column" gap="24px" style={{ width: '534px', marginBottom: '20px' }}>
+        <Flex flexDirection="column" gap="24px" style={{ width: '534px', marginBottom: '20px' }}>
           <FlexItem width="120px" stretch={false}>
             <Field name={`${x}.matter_genre_id`} label="案件区分" category={MATTER_GENRE} component={MatterSelect} />
           </FlexItem>

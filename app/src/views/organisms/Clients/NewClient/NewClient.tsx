@@ -9,7 +9,7 @@ interface NewClientProps {
 }
 
 const NewClient = ({ onCancel }: NewClientProps) => (
-  <Flex layout="fill-space">
+  <Flex layout="fill">
     <NavClient />
     <Flex layout="stack" flex={1}>
       <MainClient onCancel={onCancel} />

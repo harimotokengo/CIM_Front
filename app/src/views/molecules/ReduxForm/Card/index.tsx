@@ -3,7 +3,7 @@
 import { ReactNode } from 'react'
 
 import close from '../../../../assets/images/close.svg'
-import { BaseProps } from '../../Base'
+import { BaseProps } from '../../../atoms/Base'
 import { StyledCard } from './Styled'
 
 const closeIcon = <img alt="plusCircle" src={close} style={{ width: '21px', height: '21px' }} />

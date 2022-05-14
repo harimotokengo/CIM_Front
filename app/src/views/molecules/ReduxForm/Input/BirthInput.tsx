@@ -49,7 +49,7 @@ export const BirthInput = (props: WrappedFieldProps & ReduxFormInputProps) => {
 
   return (
     <InputWrapper label={label}>
-      <Flex container flexWrap="wrap" gap="10px" alignItems="center">
+      <Flex flexWrap="wrap" gap="10px" alignItems="center">
         <FlexItem width="100px" stretch={false}>
           <StyledInput value={year} onChange={e => handleYearChange(e.currentTarget.value)} />
         </FlexItem>

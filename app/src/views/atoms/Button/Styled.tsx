@@ -4,15 +4,15 @@ import { baseSpacing, baseStyles } from '../Base'
 import { ButtonProps } from '.'
 
 export const StyledButton = styled.button<ButtonProps>`
-  border-radius: 4px;
   padding: 0.5rem 1rem;
   border-color: transparent;
   transition: background-color 0.1s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.045);
-  border-radius: 4px;
+  border-radius: ${props => props.theme.radii.default};
+  font-size: ${props => (props.large ? props.theme.fontSizes.large.fontSize : props.theme.fontSizes.label.fontSize)};
+  line-height: ${props => (props.large ? props.theme.fontSizes.large.fontSize : props.theme.fontSizes.label.fontSize)};
 
   &:hover {
     cursor: pointer;
@@ -29,31 +29,35 @@ export const StyledButton = styled.button<ButtonProps>`
   }
 
   /* variant styles */
-  ${props => props.variant === 'primary' && StyledPrimaryButton}
+  ${props => props.variant === 'primary-red' && StyledPrimaryRedButton}
+  ${props => props.variant === 'primary-green' && StyledPrimaryGreenButton}
+  ${props => props.variant === 'primary-edit' && StyledPrimaryEditButton}
   ${props => props.variant === 'secondary' && StyledSecondaryButton}
-  ${props => props.variant === 'select' && StyledGreenButton}
-  ${props => props.variant === 'edit' && StyledEditButton}
 
   ${baseSpacing}
   ${baseStyles}
 `
 
-export const StyledPrimaryButton = css<ButtonProps>`
-  color: #ffffff;
-  background: #f94144;
+export const StyledPrimaryRedButton = css<ButtonProps>`
+  color: ${props => props.theme.buttons.primaryRed.color};
+  background: ${props => props.theme.buttons.primaryRed.bg};
+  box-shadow: ${props => props.theme.buttons.primaryRed.shadow};
+`
+
+export const StyledPrimaryGreenButton = css<ButtonProps>`
+  color: ${props => props.theme.buttons.primaryGreen.color};
+  background: ${props => props.theme.buttons.primaryGreen.bg};
+  box-shadow: ${props => props.theme.buttons.primaryGreen.shadow};
+`
+
+export const StyledPrimaryEditButton = css<ButtonProps>`
+  color: ${props => props.theme.buttons.primaryEdit.color};
+  background: ${props => props.theme.buttons.primaryEdit.bg};
+  box-shadow: ${props => props.theme.buttons.primaryEdit.shadow};
 `
 
 export const StyledSecondaryButton = css<ButtonProps>`
-  color: #ffffff;
-  background: #dedede;
-`
-
-export const StyledGreenButton = css<ButtonProps>`
-  color: #ffffff;
-  background: #17a2b8;
-`
-
-export const StyledEditButton = css<ButtonProps>`
-  color: #ffffff;
-  background: #c2cfe0;
+  color: ${props => props.theme.buttons.secondary.color};
+  background: ${props => props.theme.buttons.secondary.bg};
+  box-shadow: ${props => props.theme.buttons.secondary.shadow};
 `

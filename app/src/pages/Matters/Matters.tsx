@@ -13,7 +13,7 @@ const menuItems: Omit<HeaderMenuItemProps, 'onClick'>[] = [
 const Matters = () => (
   <>
     <HeaderMenu menuItems={menuItems} />
-    <Flex layout="fill-space" style={{ overflowY: 'hidden' }}>
+    <Flex layout="fill" style={{ overflowY: 'hidden' }}>
       <Flex layout="stack" flex={1} style={{ height: '100%' }}>
         <MattersView />
       </Flex>

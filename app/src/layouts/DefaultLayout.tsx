@@ -30,7 +30,7 @@ const DefaultLayout = () => {
   }, [fetchUserError])
 
   return (
-    <Flex layout="fill-space" style={{ height: '100vh' }}>
+    <Flex layout="fill" style={{ height: '100vh' }}>
       <ProjectSidebar />
       <Flex layout="stack" flex={1}>
         <ProjectHeader />

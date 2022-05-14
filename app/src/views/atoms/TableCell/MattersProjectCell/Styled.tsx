@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import styled from 'styled-components'
 
 export const StyledIcon = styled.div<{ matterGenreId: number }>`
@@ -10,40 +11,40 @@ export const StyledIcon = styled.div<{ matterGenreId: number }>`
     let color = ''
     switch (props.matterGenreId) {
       case 1:
-        color = '#FF7070' // 離
+        color = props.theme.icons.matterGenre.genres[1].bg
         break
       case 2:
-        color = '#FC693B' // 労
+        color = props.theme.icons.matterGenre.genres[2].bg
         break
       case 3:
-        color = '#2070B9' // 刑
+        color = props.theme.icons.matterGenre.genres[3].bg
         break
       case 4:
-        color = '#FFC93D' // 債
+        color = props.theme.icons.matterGenre.genres[4].bg
         break
       case 5:
-        color = '#55C6BF' // 交
+        color = props.theme.icons.matterGenre.genres[5].bg
         break
       case 6:
-        color = '#3ABD96' // 相
+        color = props.theme.icons.matterGenre.genres[6].bg
         break
       case 7:
-        color = '#21928E' // 民
+        color = props.theme.icons.matterGenre.genres[7].bg
         break
       case 8:
-        color = '#026088' // 顧
+        color = props.theme.icons.matterGenre.genres[8].bg
         break
       case 9:
-        color = '#026088' // 法
+        color = props.theme.icons.matterGenre.genres[9].bg
         break
       case 10:
-        color = '#FFC93D' // 知
+        color = props.theme.icons.matterGenre.genres[10].bg
         break
       case 11:
-        color = '#026088' // 個
+        color = props.theme.icons.matterGenre.genres[11].bg
         break
       default:
-        color = '#C2CFE0' // 分
+        color = props.theme.icons.matterGenre.genres[0].bg
     }
     return color
   }};
@@ -66,40 +67,40 @@ export const StyledIcon = styled.div<{ matterGenreId: number }>`
       let label = ''
       switch (props.matterGenreId) {
         case 1:
-          label = '"離"'
+          label = props.theme.matterGenreLabels[1].toString()
           break
         case 2:
-          label = '"労"'
+          label = props.theme.matterGenreLabels[2].toString()
           break
         case 3:
-          label = '"刑"'
+          label = props.theme.matterGenreLabels[3].toString()
           break
         case 4:
-          label = '"債"'
+          label = props.theme.matterGenreLabels[4].toString()
           break
         case 5:
-          label = '"交"'
+          label = props.theme.matterGenreLabels[5].toString()
           break
         case 6:
-          label = '"相"'
+          label = props.theme.matterGenreLabels[6].toString()
           break
         case 7:
-          label = '"民"'
+          label = props.theme.matterGenreLabels[7].toString()
           break
         case 8:
-          label = '"顧"'
+          label = props.theme.matterGenreLabels[8].toString()
           break
         case 9:
-          label = '"法"'
+          label = props.theme.matterGenreLabels[9].toString()
           break
         case 10:
-          label = '"知"'
+          label = props.theme.matterGenreLabels[10].toString()
           break
         case 11:
-          label = '"個"'
+          label = props.theme.matterGenreLabels[11].toString()
           break
         default:
-          label = '"分"'
+          label = props.theme.matterGenreLabels[0].toString()
       }
       return label
     }};
@@ -133,13 +134,10 @@ export const StyledDateWrapper = styled.div`
 `
 
 export const StyledDate = styled.p<{ label: string }>`
-  font-family: 'Noto Sans JP';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 18px;
+  font-size: ${props => props.theme.fontSizes.note.fontSize};
+  line-height: ${props => props.theme.fontSizes.note.lineHeight};
 
-  color: #a4a4a4;
+  color: ${props => props.theme.colors.greys.dark};
 
   &:before {
     float: left;
@@ -149,7 +147,7 @@ export const StyledDate = styled.p<{ label: string }>`
     text-align: center;
 
     background: rgba(191, 201, 210, 0.2);
-    border-radius: 4px;
+    border-radius: ${props => props.theme.radii.default};
 
     content: ${props => `"${props.label}"`};
   }

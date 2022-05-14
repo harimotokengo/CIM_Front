@@ -12,8 +12,8 @@ import { TableBody } from '../../atoms/Table/TableBody'
 import { TableCol } from '../../atoms/Table/TableCol'
 import { TableHeader } from '../../atoms/Table/TableHeader'
 import { TableRow } from '../../atoms/Table/TableRow'
-import { MattersNameCell } from '../../molecules/TableCell/MattersNameCell'
-import MattersProjectCell, { MattersProjectCellProps } from '../../molecules/TableCell/MattersProjectCell'
+import { MattersNameCell } from '../../atoms/TableCell/MattersNameCell'
+import MattersProjectCell, { MattersProjectCellProps } from '../../atoms/TableCell/MattersProjectCell'
 
 const Matters = () => {
   const navigate = useNavigate()

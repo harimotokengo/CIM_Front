@@ -9,10 +9,10 @@ import { AppState } from '../../../../store/rootReducer'
 import { getAge, getBirthdayProperty } from '../../../../utils/common'
 import Flex from '../../../atoms/Flex'
 import { InputWrapper } from '../../../atoms/Input/InputWrapper'
-import { ReduxFormInput } from '../../../atoms/ReduxForm/Input'
 import AddressCard from '../../../molecules/ReduxForm/Card/AddressCard'
 import EmailCard from '../../../molecules/ReduxForm/Card/EmailCard'
 import PhoneCard from '../../../molecules/ReduxForm/Card/PhoneCard'
+import { ReduxFormInput } from '../../../molecules/ReduxForm/Input'
 import { BirthInput } from '../../../molecules/ReduxForm/Input/BirthInput'
 import MatterForm from '../Matter/Matter'
 
@@ -35,7 +35,7 @@ const ClientForm = () => {
   }, [formState])
 
   return (
-    <Flex container flexDirection="column" gap="24px" style={{ width: '534px' }}>
+    <Flex flexDirection="column" gap="24px" style={{ width: '534px' }}>
       <Flex layout="equal-columns" gap="24px">
         <Field name="name" label="姓" component={ReduxFormInput} validate={[required]} />
         <Field name="first_name" label="名" component={ReduxFormInput} validate={[required]} />
@@ -44,7 +44,7 @@ const ClientForm = () => {
         <Field name="name_kana" label="せい" component={ReduxFormInput} validate={[required]} />
         <Field name="first_name_kana" label="めい" component={ReduxFormInput} validate={[required]} />
       </Flex>
-      <Flex layout="fill-space" gap="24px">
+      <Flex layout="fill" gap="24px">
         <Field
           name="birth_date"
           label="生年月日"

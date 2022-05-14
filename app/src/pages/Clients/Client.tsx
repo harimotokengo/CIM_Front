@@ -17,7 +17,7 @@ const menuItems: Omit<HeaderMenuItemProps, 'onClick'>[] = [
 const Client = () => (
   <>
     <HeaderMenu menuItems={menuItems} />
-    <Flex layout="fill-space" style={{ overflowY: 'hidden' }}>
+    <Flex layout="fill" style={{ overflowY: 'hidden' }}>
       <ProjectDetailSidebar />
       <Flex layout="stack" flex={1} style={{ height: '100%' }}>
         <ClientView />

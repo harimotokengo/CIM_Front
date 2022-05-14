@@ -4,7 +4,7 @@ import { submit } from 'redux-form'
 
 import { postClientRequest } from '../../../../store/actions/clientAction'
 import { IClient } from '../../../../store/models/clientModel'
-import Button from '../../Button'
+import { PrimaryRedButton } from '../../Button'
 
 export const clientSubmit = (client: IClient, dispatch: Dispatch) => {
   dispatch(postClientRequest({ client }))
@@ -12,7 +12,7 @@ export const clientSubmit = (client: IClient, dispatch: Dispatch) => {
 
 export const ClientSubmitButton = () => {
   const dispatch = useDispatch()
-  return <Button variant="primary" label="新規登録" onClick={() => dispatch(submit('client_form'))} />
+  return <PrimaryRedButton label="新規登録" onClick={() => dispatch(submit('client_form'))} />
 }
 
 export default connect()(ClientSubmitButton)

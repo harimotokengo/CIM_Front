@@ -10,9 +10,10 @@ export interface ButtonProps extends Omit<HTMLAttributes<HTMLButtonElement>, 'cs
   variant?: ButtonVariant
   selected?: boolean
   disabled?: boolean
+  large?: boolean
 }
 
-export type ButtonVariant = 'default' | 'primary' | 'secondary' | 'select' | 'icon' | 'edit'
+export type ButtonVariant = 'default' | 'primary-red' | 'primary-green' | 'primary-edit' | 'secondary' | 'icon'
 
 export const Button = (props: ButtonProps) => {
   const { className, tag, icon, label, disabled, ...rest } = props

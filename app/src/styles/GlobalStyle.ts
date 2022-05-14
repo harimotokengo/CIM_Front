@@ -14,10 +14,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html {
-    font-size: 16px;
-    font-family: 'Noto Sans JP', sans-serif;
-    background-color: #ffffff;
-    color: #343A40;
+    font-size: ${props => props.theme.fontSizes.baseFontSize};
+    font-family: ${props => props.theme.fonts.fontFamily};
+    background-color: ${props => props.theme.global.bg};
+    color: ${props => props.theme.colors.greys.darkest};
     min-height: 100%;
   }
   body {

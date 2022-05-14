@@ -1,23 +1,5 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchClientRequest } from '../store/actions/clientAction'
-import { getClientSelector } from '../store/selectors/clientSelector'
-
-const Home: React.FC = () => {
-  const dispatch = useDispatch()
-  const client = useSelector(getClientSelector)
-
-  const handleClick = () => {
-    dispatch(fetchClientRequest({ client: { id: 99 } }))
-  }
-
-  return (
-    <>
-      <input type="button" onClick={() => handleClick()} />
-      <p>{client ? `id:${client.id || ''} name:${client.name}` : 'データがありません'}</p>
-    </>
-  )
-}
+const Home: React.FC = () => <p>ホーム</p>
 
 export default Home

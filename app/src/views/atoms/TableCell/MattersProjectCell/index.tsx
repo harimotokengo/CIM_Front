@@ -1,4 +1,4 @@
-import { TableCell } from '../../../atoms/Table/TableCell'
+import { TableCell } from '../../Table/TableCell'
 import { StyledDate, StyledDateWrapper, StyledIcon, StyledInfoWrapper, StyledName } from './Styled'
 
 export interface MattersProjectCellProps {

@@ -1,4 +1,4 @@
-import { TableCell } from '../../../atoms/Table/TableCell'
+import { TableCell } from '../../Table/TableCell'
 import { StyledNameIcon } from './Styled'
 
 export const MattersNameCell = () => (

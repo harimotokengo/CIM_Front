@@ -10,9 +10,9 @@ import { Card } from '../../../atoms/Card'
 import Flex from '../../../atoms/Flex'
 import { FlexItem } from '../../../atoms/FlexItem'
 import Label from '../../../atoms/Label'
-import { ReduxFormInput } from '../../../atoms/ReduxForm/Input'
-import { ReduxFormSelect } from '../../../atoms/ReduxForm/Select'
 import Title from '../../../atoms/Title'
+import { ReduxFormInput } from '../Input'
+import { ReduxFormSelect } from '../Select'
 
 const plusCircleIcon = <img alt="plusCircle" src={plusCircle} style={{ width: '21px', height: '21px' }} />
 
@@ -40,8 +40,8 @@ const AddressCard = ({ label, fields }: WrappedFieldArrayProps<IAddress> & Addre
           <></>
         ) : (
           // eslint-disable-next-line react/no-array-index-key
-          <Card key={i} width="534px" closeButton onClosed={() => handleClose(i)}>
-            <Flex container flexWrap="wrap" gap="10px" mb="10px">
+          <Card key={i} closeButton onClosed={() => handleClose(i)}>
+            <Flex flexWrap="wrap" gap="10px" mb="10px">
               <FlexItem width="80px" stretch={false}>
                 <Field name={`${x}.category`} label="種別" category={ADDRESS_CATEGORY} component={ReduxFormSelect} />
               </FlexItem>

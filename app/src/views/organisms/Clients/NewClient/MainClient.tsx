@@ -8,11 +8,10 @@ import Button from '../../../atoms/Button'
 import Flex from '../../../atoms/Flex'
 import Footer from '../../../atoms/Footer'
 import { Main } from '../../../atoms/Main'
-import ClientForm from '../../../atoms/ReduxForm/Form/ClientForm'
-import { ClientSubmitButton } from '../../../atoms/ReduxForm/Submit/ClientSubmit'
-// import Submit from '../../atoms/ReduxForm/Submit'
 import Title from '../../../atoms/Title'
-import LargeButton from '../../../molecules/Button/LargeButton'
+import { PrimaryGreenButton, SecondaryButton } from '../../../molecules/Button'
+import ClientForm from '../../../molecules/ReduxForm/Form/ClientForm'
+import { ClientSubmitButton } from '../../../molecules/ReduxForm/Submit/ClientSubmit'
 import MatterForm from '../Matter/Matter'
 import CorpForm from './Corp/Profile'
 import PersonalForm from './Personal/Profile'
@@ -65,21 +64,21 @@ const MainClient = ({ onCancel }: MainClientProps) => {
   return (
     <ClientForm>
       <Main id="client-form-main" saveState>
-        <Flex layout="fill-space-horizontal" justifyContent="center">
-          <Flex container flexDirection="column" mt="20px" mb="20px" gap="20px">
+        <Flex layout="fill-horizontal" justifyContent="center">
+          <Flex flexDirection="column" mt="20px" mb="20px" gap="20px">
             <ScrollElement name="profile" />
             <Title id="profile">クライアント登録</Title>
-            <Flex container flexDirection="row" gap="10px">
-              {views.map((x, i) => (
-                /* eslint-disable react/no-array-index-key */
-                <LargeButton
-                  key={i}
-                  variant={view === i ? 'select' : 'secondary'}
-                  label={x}
-                  onClick={() => setView(i)}
-                />
+            <Flex flexDirection="row" gap="10px">
+              {views.map(
+                (x, i) =>
+                  /* eslint-disable react/no-array-index-key */
+                  view === i ? (
+                    <PrimaryGreenButton large key={i} label={x} onClick={() => setView(i)} />
+                  ) : (
+                    <SecondaryButton large key={i} label={x} onClick={() => setView(i)} />
+                  )
                 /* eslint-enable react/no-array-index-key */
-              ))}
+              )}
             </Flex>
             <CurrentForm />
             <ScrollElement name="matter" />
@@ -90,7 +89,7 @@ const MainClient = ({ onCancel }: MainClientProps) => {
         </Flex>
       </Main>
       <Footer>
-        <Flex layout="fill-space-centered" gap="24px">
+        <Flex layout="fill-centered" gap="24px">
           <Button variant="secondary" label="キャンセル" onClick={handleCancel} />
           <ClientSubmitButton />
         </Flex>

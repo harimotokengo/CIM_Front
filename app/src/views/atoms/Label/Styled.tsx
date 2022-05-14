@@ -48,7 +48,7 @@ const StyledNavItemLabel = css<LabelProps>`
   > .ch-icon {
     width: 21px;
     height: 21px;
-    border-radius: 4px;
+    border-radius: ${props => props.theme.radii.default};
     margin: 0 8px 0 0;
   }
 `

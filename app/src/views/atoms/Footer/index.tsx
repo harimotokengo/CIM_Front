@@ -8,7 +8,7 @@ export interface FooterProps extends BaseProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ children, className, ...rest }: FooterProps) => (
-  <StyledFooter {...rest} className={className || ''}>
+  <StyledFooter layout="fill-horizontal-centered" gap="24px" className={className || ''} {...rest}>
     {children}
   </StyledFooter>
 )

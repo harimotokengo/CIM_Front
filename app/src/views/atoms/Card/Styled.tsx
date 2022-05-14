@@ -9,18 +9,12 @@ export const StyledCard = styled.div<CardProps>`
   flex-direction: column;
   align-items: stretch;
   padding: 24px;
-  background: #ffffff;
-  /* bd.gray-20% */
+  background: ${props => props.theme.card.bg};
 
   border: 1px solid rgba(191, 201, 210, 0.2);
-  box-sizing: border-box;
-  /* Small shadow */
 
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.045);
-  border-radius: 4px;
-
-  width: ${props => props.width};
-  height: ${props => props.height};
+  box-shadow: ${props => props.theme.card.shadow};
+  border-radius: ${props => props.theme.radii.default};
 
   ${baseSpacing}
   ${baseStyles}

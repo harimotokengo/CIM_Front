@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { baseSpacing, baseStyles } from '../../Base'
+import { baseSpacing, baseStyles } from '../../../atoms/Base'
 import { CardProps } from '.'
 
 export const StyledCard = styled.div<CardProps>`
