@@ -20,7 +20,7 @@ interface MainClientProps {
   onCancel: () => void
 }
 
-const views = ['個人', '法人', '問い合わせ']
+const views = ['個人', '法人']
 
 const MainClient = ({ onCancel }: MainClientProps) => {
   const [view, setView] = useState(0)

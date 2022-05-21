@@ -5,8 +5,10 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+import { MATTER_STATUS } from '../../../constants/matters'
 import { fetchClientsRequest } from '../../../store/actions/clientAction'
 import { getClientsSelector } from '../../../store/selectors/clientSelector'
+import { getFilterSelector } from '../../../store/selectors/filterSelector'
 import { Table } from '../../atoms/Table'
 import { TableBody } from '../../atoms/Table/TableBody'
 import { TableCol } from '../../atoms/Table/TableCol'
@@ -19,7 +21,9 @@ const Matters = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const clients = useSelector(getClientsSelector)
-  const [matters, setMatters] = useState<((MattersProjectCellProps & { clientId: number }) | null)[]>()
+  const filter = useSelector(getFilterSelector)
+  const [matters, setMatters] =
+    useState<((MattersProjectCellProps & { clientId: number; matterStatus: string }) | null)[]>()
 
   useEffect(() => {
     dispatch(fetchClientsRequest())
@@ -29,18 +33,23 @@ const Matters = () => {
   useEffect(() => {
     const newMatters = clients
       .map(x =>
-        x.matters_attributes?.map(v => ({
-          clientId: x.id || 0,
-          matterGenreId: v.matter_genre_id,
-          name: `${x.name} ${x.first_name}`,
-          startDate: v.start_date ? moment(v.start_date).format('YYYY/M/D') : '',
-          updateDate: v.updated_at ? moment(v.updated_at).format('YYYY/M/D') : '',
-        }))
+        x.matters_attributes
+          ?.filter(v =>
+            filter.is_filter && filter.filter_key === 'matter_genre' ? v.matter_genre_id === filter.filter_value : true
+          )
+          .map(v => ({
+            clientId: x.id || 0,
+            matterGenreId: v.matter_genre_id,
+            name: `${x.name} ${x.first_name}`,
+            startDate: v.start_date ? moment(v.start_date).format('YYYY/M/D') : '',
+            updateDate: v.updated_at ? moment(v.updated_at).format('YYYY/M/D') : '',
+            matterStatus: MATTER_STATUS.find(a => a.id === v.matter_status_id)?.name.toString() || '',
+          }))
       )
       .flatMap(x => x || null)
       .filter(x => x !== null)
     setMatters(newMatters)
-  }, [clients])
+  }, [clients, filter])
 
   const handleClick = (id: number) => {
     navigate(`/clients/${id}`)
@@ -70,7 +79,7 @@ const Matters = () => {
               <TableCol width="200px">
                 <MattersNameCell />
               </TableCol>
-              <TableCol width="200px">受任</TableCol>
+              <TableCol width="200px">{x.matterStatus}</TableCol>
             </TableRow>
           ) : (
             // eslint-disable-next-line react/jsx-no-useless-fragment

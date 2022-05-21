@@ -7,7 +7,7 @@ interface HeaderSearchItemProps {
   label: string
 }
 
-const HeaderSearchItem = (props: HeaderSearchItemProps) => {
+export const HeaderSearchItem = (props: HeaderSearchItemProps) => {
   const { icon, label } = props
 
   return (
