@@ -37,7 +37,7 @@ function* fetchClientsSaga() {
   try {
     const response = yield* call(getClients)
     if (response.status !== 200) {
-      fetchClientsFailure({ error: response.statusText })
+      yield* put(fetchClientsFailure({ error: response.statusText }))
     }
     yield* put(
       fetchClientsSuccess({
@@ -58,7 +58,7 @@ function* fetchClientSaga(action: FetchClientRequest) {
   try {
     const response = yield* call(getClient, action.payload)
     if (response.status !== 200) {
-      fetchClientFailure({ error: response.statusText })
+      yield* put(fetchClientFailure({ error: response.statusText }))
     }
     yield* put(
       fetchClientSuccess({
@@ -80,7 +80,7 @@ function* postClientSaga(action: PostClientRequest) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const response = yield* call(postClient, action.payload)
     if (response.status !== 200) {
-      postClientFailure({ error: response.statusText })
+      yield* put(postClientFailure({ error: response.statusText }))
     }
     yield* put(postClientSuccess())
   } catch (e: any) {
@@ -98,7 +98,7 @@ function* patchClientSaga(action: PatchClientRequest) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const response = yield* call(patchClient, action.payload)
     if (response.status !== 200) {
-      patchClientFailure({ error: response.statusText })
+      yield* put(patchClientFailure({ error: response.statusText }))
     }
     yield* put(patchClientSuccess())
   } catch (e: any) {
