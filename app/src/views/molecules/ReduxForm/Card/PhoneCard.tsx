@@ -34,24 +34,24 @@ const EmailCard = ({ label, fields }: WrappedFieldArrayProps<IPhoneNumber> & Pho
   return (
     <>
       <Title variant="sub">{label}</Title>
-      {fields.map((field, index) =>
-        fields.get(index)._destroy ? (
+      {fields.map((x, i) =>
+        fields.get(i)._destroy ? (
           <></>
         ) : (
           // eslint-disable-next-line react/no-array-index-key
-          <Card key={index} closeButton onClosed={() => handleClose(index)}>
+          <Card key={i} closeButton onClosed={() => handleClose(i)}>
             <Flex flexWrap="wrap" gap="10px" mb="10px">
               <FlexItem width="80px" stretch={false}>
-                <Field name={`${field}.category`} label="種別" category={PHONE_CATEGORY} component={ReduxFormSelect} />
+                <Field name={`${x}.category`} label="種別" category={PHONE_CATEGORY} component={ReduxFormSelect} />
               </FlexItem>
               <FlexItem width="auto">
-                <Field name={`${field}.phone_number`} label="電話番号" component={ReduxFormInput} />
+                <Field name={`${x}.phone_number`} label="電話番号" component={ReduxFormInput} />
               </FlexItem>
               <FlexItem width="100px" stretch={false}>
-                <Field name={`${field}.extension_number`} label="内線番号" component={ReduxFormInput} />
+                <Field name={`${x}.extension_number`} label="内線番号" component={ReduxFormInput} />
               </FlexItem>
             </Flex>
-            <Field name={`${field}.memo`} label="メモ" component={ReduxFormInput} />
+            <Field name={`${x}.memo`} label="メモ" component={ReduxFormInput} />
           </Card>
         )
       )}

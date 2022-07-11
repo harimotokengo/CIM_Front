@@ -2,10 +2,6 @@ import styled from 'styled-components'
 
 interface InputProps {
   isError: boolean
-  height?: string
-}
-interface BoxLabelProps {
-  width: string
 }
 
 export const StyledInputWrapper = styled.div`
@@ -13,22 +9,6 @@ export const StyledInputWrapper = styled.div`
   flex-direction: column;
 `
 
-export const StyledLabel = styled.label`
-  font-family: 'Noto Sans JP';
-  font-style: normal;
-  font-size: 14px;
-  line-height: 18px;
-  color: #39434d;
-  margin-bottom: 5px;
-`
-
-export const StyledBoxLabel = styled.span<BoxLabelProps>`
-  width: ${props => props.width};
-  text-align: right;
-`
-export const StyledBoxSelect = styled.div`
-  flex: 1;
-`
 export const StyledInputLabel = styled.label`
   font-family: 'Noto Sans JP';
   font-style: normal;
