@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-import { StyledOfficeProfile, StyledOfficeProfile2 } from './Styled'
+import { StyledOfficeProfile, StyledP } from './Styled'
+
 
 
 export const OfficeProfile = () => {
@@ -12,7 +13,7 @@ export const OfficeProfile = () => {
 
   return (
     <StyledOfficeProfile>
-      <StyledOfficeProfile2>事務所名</StyledOfficeProfile2>
+      <StyledP>事務所名</StyledP>
       <form onSubmit={(e) => e.preventDefault()}>
         <input type="text" value={Name} onChange={(e) =>setName(e.target.value)} />
       </form>
