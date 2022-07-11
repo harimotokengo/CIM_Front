@@ -8,6 +8,7 @@ import { StyledFlex } from './Styled'
 type Layout = 'fill' | 'fill-centered' | 'fill-horizontal' | 'fill-horizontal-centered' | 'equal-columns' | 'stack'
 
 export interface FlexProps extends BaseProps, FlexboxProps {
+  children?: any
   flexShrink?: number
   layout?: Layout
   style?: {}
