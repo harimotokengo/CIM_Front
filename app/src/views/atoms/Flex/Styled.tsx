@@ -76,14 +76,4 @@ export const StyledFlex = styled.div<FlexProps>`
 
   ${baseSpacing}
   ${baseStyles}
-
-  &.flex-hide-scrollbar {
-    overflow-y: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      width: 0;
-    }
-  }
 `

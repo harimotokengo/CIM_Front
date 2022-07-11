@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import DefaultLayout from './layouts/DefaultLayout'
 // import ClientPage from './pages/Clients'
-// import Login from './pages/Login'
+import Login from './pages/Login'
 import Page404 from './pages/Page404'
 
 const Home = React.lazy(() => import('./pages/Home'))
@@ -21,7 +21,7 @@ const App: React.FC = () => (
           <Route path="clients/:id" element={<Client />} />
           <Route path="matters" element={<Matters />} />
         </Route>
-        {/* <Route path="login" element={<Login />} /> */}
+        <Route path="login" element={<Login />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>
