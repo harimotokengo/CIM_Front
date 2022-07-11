@@ -9,7 +9,6 @@ import { StyledCard } from './Styled'
 const closeIcon = <img alt="plusCircle" src={close} style={{ width: '21px', height: '21px' }} />
 
 export interface CardProps extends BaseProps {
-  width?: string
   closeButton?: boolean
   children: ReactNode | ReactNode[]
   onClosed?: () => void
