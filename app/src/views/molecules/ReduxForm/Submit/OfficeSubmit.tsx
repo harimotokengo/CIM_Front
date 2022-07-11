@@ -4,16 +4,15 @@ import { submit } from 'redux-form'
 
 import { postClientRequest } from '../../../../store/actions/clientAction'
 import { IClient } from '../../../../store/models/clientModel'
-import { PrimaryRedButton } from '../../Button'
+import { SecondaryButton } from '../../Button'
 
 export const clientSubmit = (client: IClient, dispatch: Dispatch) => {
   dispatch(postClientRequest({ client }))
 }
 
-// dispatchでRailsに飛ばしている
-export const ClientSubmitButton = () => {
+export const OfficeSubmitButton = () => {
   const dispatch = useDispatch()
-  return <PrimaryRedButton label="新規登録" onClick={() => dispatch(submit('client_form'))} />
+  return <SecondaryButton label="変更を保存する" onClick={() => dispatch(submit('client_form'))} />
 }
 
-export default connect()(ClientSubmitButton)
+export default connect()(OfficeSubmitButton)
