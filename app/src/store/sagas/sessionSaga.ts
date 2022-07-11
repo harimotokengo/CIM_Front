@@ -15,7 +15,7 @@ function* loginSaga(action: LoginRequest) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const response = yield* call(login, action.payload)
     if (response.status !== 200) {
-      yield* put(loginFailure({ error: response.statusText }))
+      loginFailure({ error: response.statusText })
     }
     yield* put(loginSuccess({ user: { id: response.data.id!, email: response.data.email } }))
   } catch (e: any) {
@@ -33,7 +33,7 @@ function* fetchMeSaga() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const response = yield* call(fetchMe)
     if (response.status !== 200) {
-      yield* put(loginFailure({ error: response.statusText }))
+      loginFailure({ error: response.statusText })
     }
     yield* put(loginSuccess({ user: { id: response.data.id!, email: response.data.email } }))
   } catch (e: any) {
