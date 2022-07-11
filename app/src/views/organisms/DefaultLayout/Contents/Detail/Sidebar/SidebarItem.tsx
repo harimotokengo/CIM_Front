@@ -1,6 +1,6 @@
 import { StyledSidebarItem, StyledSidebarItemWrapper } from './Styled'
 
-interface SidebarItemProps {
+export interface SidebarItemProps {
   label: string
 }
 

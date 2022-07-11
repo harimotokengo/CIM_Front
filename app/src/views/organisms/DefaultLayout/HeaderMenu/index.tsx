@@ -1,28 +1,36 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 
 import HeaderMenuItem, { HeaderMenuItemProps } from './HeaderMenuItem'
 import { StyledHeaderMenuContainer } from './Styled'
 
 interface HeaderMenuProps {
-  menuItems: Omit<HeaderMenuItemProps, 'onClick'>[]
+  // menuItems: Omit<HeaderMenuItemProps, 'onClick'>[]
+  items: Omit<HeaderMenuItemProps, 'onClick'>[]
+  setItems: (newItems: Omit<HeaderMenuItemProps, 'onClick'>[]) => void
 }
 
 const HeaderMenu = (props: HeaderMenuProps) => {
-  const { menuItems } = props
-  const [items, setItems] = useState(menuItems)
+  const { items, setItems } = props
+  // const [items, setItems] = useState(menuItems)
 
   const handleClick = (id: string) => {
-    const newItems: typeof items = items.map(x => ({
-      ...x,
-      isCurrent: x.id === id,
+    const newItems: typeof items = items.map(item => ({
+      ...item,
+      isCurrent: item.id === id,
     }))
     setItems(newItems)
   }
 
   return (
     <StyledHeaderMenuContainer>
-      {items.map(x => (
-        <HeaderMenuItem key={x.id} id={x.id} label={x.label} isCurrent={x.isCurrent} onClick={handleClick} />
+      {items.map(item => (
+        <HeaderMenuItem
+          key={item.id}
+          id={item.id}
+          label={item.label}
+          isCurrent={item.isCurrent}
+          onClick={handleClick}
+        />
       ))}
     </StyledHeaderMenuContainer>
   )
