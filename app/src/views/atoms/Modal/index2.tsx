@@ -3,7 +3,7 @@
 import React, { forwardRef, useImperativeHandle, useState } from 'react'
 
 import close from '../../../assets/images/close.svg'
-import { StyledModal } from './Styled'
+import { StyledModal2 } from './Styled2'
 
 const closeIcon = <img alt="close" src={close} style={{ width: '24px', height: '24px' }} />
 
@@ -11,29 +11,28 @@ interface ModalProps {
   children: React.ReactNode | React.ReactNode[]
 }
 
-export interface ModalHandles {
-  toggleModal(): void
+export interface ModalHandles2 {
+  AddModal(): void
 }
 
-// toggleをしたいからRefを参照してる
-const Modal = forwardRef<ModalHandles, ModalProps>((props, ref) => {
+const Modal2 = forwardRef<ModalHandles2, ModalProps>((props, ref) => {
   const { children } = props
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen2, setIsOpen2] = useState(false)
 
   useImperativeHandle(ref, () => ({
-    toggleModal() {
-      setIsOpen(!isOpen)
+    AddModal() {
+      setIsOpen2(!isOpen2)
     },
   }))
 
   return (
-    <StyledModal isOpen={isOpen} onEscapeKeydown={() => setIsOpen(!isOpen)}>
+    <StyledModal2 isOpen={isOpen2} onEscapeKeydown={() => setIsOpen2(!isOpen2)}>
       {children}
-      <span className="modal-close" onClick={() => setIsOpen(false)}>
+      <span className="modal-close" onClick={() => setIsOpen2(false)}>
         {closeIcon}
       </span>
-    </StyledModal>
+    </StyledModal2>
   )
 })
 
-export default Modal
+export default Modal2
