@@ -16,6 +16,7 @@ import lightTheme from './styles/light'
 const container = document.getElementById('root')
 const root = createRoot(container as Element)
 root.render(
+
   <React.StrictMode>
     <ThemeProvider theme={lightTheme}>
       <GlobalStyles />
