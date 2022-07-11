@@ -1,5 +1,6 @@
 import group46 from '../../../../assets/images/group_46.svg'
 import HeaderAddButton from './HeaderAddButton'
+import HeaderAddOfficeButton from './HeaderAddOfficeButton'
 import HeaderCategoryIcon from './HeaderCategory'
 import HeaderSearch from './HeaderSearch'
 import { StyledHeaderContainer, StyledHeaderLeftContainer, StyledHeaderRightContainer, StyledNameIcon } from './Styled'
@@ -18,6 +19,7 @@ const Header = () => (
       <StyledNameIcon>
         <p>姓名</p>
       </StyledNameIcon>
+      <HeaderAddOfficeButton />
     </StyledHeaderRightContainer>
   </StyledHeaderContainer>
 )

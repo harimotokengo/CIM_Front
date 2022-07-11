@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 import { baseSpacing, baseStyles } from '../Base'
 import Flex from '../Flex'
-import { NavbarProps } from '.'
+import { NavbarProps } from './index'
+import { NavbarProps2 } from './index2'
 import { NavbarItemProps } from './NavbarItem'
 
 export const StyledNavbar = styled(Flex)<NavbarProps>`
@@ -13,6 +14,20 @@ export const StyledNavbar = styled(Flex)<NavbarProps>`
   background-color: #ffffff;
   width: 279px;
   padding-top: 1rem;
+  box-shadow: 8px 0px 19px rgba(0, 0, 0, 0.06);
+
+  ${baseStyles}
+  ${baseSpacing}
+`
+
+export const StyledNavbar2 = styled(Flex)<NavbarProps2>`
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  color: #39434d;
+  background-color: #ffffff;
+  width: 279px;
+  padding-top: 80px;
   box-shadow: 8px 0px 19px rgba(0, 0, 0, 0.06);
 
   ${baseStyles}

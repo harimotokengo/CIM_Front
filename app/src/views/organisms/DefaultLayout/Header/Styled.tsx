@@ -216,6 +216,7 @@ export const StyledHeaderSearchItem = styled.label`
 
 export const StyledHeaderAddButtonWrapper = styled.span`
   position: relative;
+
 `
 
 export const StyledHeaderAddBoxWrapper = styled.div`
@@ -261,6 +262,29 @@ export const StyledHeaderAddItemWrapper = styled.div`
 `
 
 export const StyledHeaderAddItem = styled.label`
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #343a40;
+`
+
+export const StyledHeaderAddOfficeWrapper = styled.div`
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+
+  * {
+    cursor: pointer;
+  }
+`
+
+export const StyledHeaderAddOffice = styled.label`
   font-family: 'Noto Sans JP';
   font-style: normal;
   font-weight: 400;

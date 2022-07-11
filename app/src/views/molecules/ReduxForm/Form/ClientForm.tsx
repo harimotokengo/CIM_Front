@@ -86,6 +86,7 @@ const ClientForm = ({ initialize, children, ...rest }: IFormProps) => {
   return <StyledForm {...rest}>{children}</StyledForm>
 }
 
+// クライアント登録（client_form）のデータ
 export default reduxForm<IClient, IProps>({
   form: 'client_form',
   // enableReinitialize: true,
@@ -93,3 +94,5 @@ export default reduxForm<IClient, IProps>({
   // asyncValidate: (_: any) => new Promise(() => {}),
   // asyncChangeFields: ['name', 'first_name', 'name_kana', 'first_name_kana'],
 })(ClientForm)
+
+// IClient=クライアントのデータをもっている

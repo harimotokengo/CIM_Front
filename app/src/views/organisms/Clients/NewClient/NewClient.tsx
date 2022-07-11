@@ -8,6 +8,8 @@ interface NewClientProps {
   onCancel: () => void
 }
 
+// NavClientとMainClientをFlexのStyleを反映して表示
+// NavClient=左メニュー、MainClient=入力画面
 const NewClient = ({ onCancel }: NewClientProps) => (
   <Flex layout="fill">
     <NavClient />

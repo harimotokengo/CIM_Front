@@ -131,7 +131,7 @@ export interface IMatter {
   //       }
   //     ]
 }
-
+// フォームに入る値
 export interface IClient {
   id?: number
   name: string
