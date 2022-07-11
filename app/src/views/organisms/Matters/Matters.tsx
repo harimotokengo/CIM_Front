@@ -49,6 +49,16 @@ const Matters = () => {
       .flatMap(x => x || null)
       .filter(x => x !== null)
     setMatters(newMatters)
+    setMatters([
+      {
+        clientId: 0,
+        matterGenreId: 0,
+        name: `xname first_name`,
+        startDate: moment(0).format('YYYY/M/D'),
+        updateDate: moment(0).format('YYYY/M/D'),
+        matterStatus: '',
+      },
+    ])
   }, [clients, filter])
 
   const handleClick = (id: number) => {
