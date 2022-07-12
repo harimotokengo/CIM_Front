@@ -70,25 +70,28 @@ const defaultSidebarItems: SidebarProps[] = [
 
 const Sidebar = () => {
   const location = useLocation()
-  const ref = useRef<ModalHandles>(null)
+  const newClientRef = useRef<ModalHandles>(null)
   const navigate = useNavigate()
   const [isNarrow, setIsNarrow] = useState(false)
   const [sidebarItems, setSidebarItems] = useState(defaultSidebarItems)
 
   useEffect(() => {
     const splitPaths = location.pathname.split('/')
-    const newItems: typeof sidebarItems = sidebarItems.map(x => {
-      if (x.children) {
-        const newChildren = x.children.map(y => ({ ...y, isCurrent: y.path === splitPaths[1] }))
+    const newItems: typeof sidebarItems = sidebarItems.map(item => {
+      if (item.children) {
+        const newChildren = item.children.map(childNode => ({
+          ...childNode,
+          isCurrent: childNode.path === splitPaths[1],
+        }))
         return {
-          ...x,
-          isCurrent: x.path === splitPaths[1],
+          ...item,
+          isCurrent: item.path === splitPaths[1],
           children: newChildren,
         }
       }
       return {
-        ...x,
-        isCurrent: x.path === splitPaths[1],
+        ...item,
+        isCurrent: item.path === splitPaths[1],
       }
     })
     setSidebarItems(newItems)
@@ -97,7 +100,7 @@ const Sidebar = () => {
 
   const handleItemClick = (path: string) => {
     if (path === 'clients/new') {
-      ref.current?.toggleModal()
+      newClientRef.current?.toggleModal()
       return
     }
     navigate(path)
@@ -106,29 +109,29 @@ const Sidebar = () => {
   return (
     <>
       <SidebarContainer isNarrow={isNarrow} headerComponent={<SidebarHeader onClick={() => setIsNarrow(!isNarrow)} />}>
-        {sidebarItems.map(x => {
-          if (!x.children) {
+        {sidebarItems.map(item => {
+          if (!item.children) {
             return (
               <SidebarItem
-                key={x.path}
-                icon={x.icon}
-                label={x.label!}
-                path={x.path!}
-                isCurrent={x.isCurrent!}
+                key={item.path}
+                icon={item.icon}
+                label={item.label!}
+                path={item.path!}
+                isCurrent={item.isCurrent!}
                 onClick={handleItemClick}
               />
             )
           }
-          if (x.isBottom) {
+          if (item.isBottom) {
             return (
               <SidebarBottom>
-                {x.children.map(y => (
+                {item.children.map(childNode => (
                   <SidebarItem
-                    key={y.path}
-                    icon={y.icon}
-                    label={y.label!}
-                    path={y.path!}
-                    isCurrent={y.isCurrent!}
+                    key={childNode.path}
+                    icon={childNode.icon}
+                    label={childNode.label!}
+                    path={childNode.path!}
+                    isCurrent={childNode.isCurrent!}
                     onClick={handleItemClick}
                   />
                 ))}
@@ -137,21 +140,21 @@ const Sidebar = () => {
           }
           return (
             <SidebarItem
-              key={x.path}
-              icon={x.icon}
-              label={x.label!}
-              path={x.path!}
-              isCurrent={x.isCurrent!}
+              key={item.path}
+              icon={item.icon}
+              label={item.label!}
+              path={item.path!}
+              isCurrent={item.isCurrent!}
               onClick={handleItemClick}
             >
-              {x.children.map(y => (
+              {item.children.map(childNode => (
                 <SidebarItem
                   sub
-                  key={y.path}
-                  icon={y.icon}
-                  label={y.label!}
-                  path={y.path!}
-                  isCurrent={y.isCurrent!}
+                  key={childNode.path}
+                  icon={childNode.icon}
+                  label={childNode.label!}
+                  path={childNode.path!}
+                  isCurrent={childNode.isCurrent!}
                   onClick={handleItemClick}
                 />
               ))}
@@ -159,8 +162,8 @@ const Sidebar = () => {
           )
         })}
       </SidebarContainer>
-      <Modal ref={ref}>
-        <NewClient onCancel={() => ref.current?.toggleModal()} />
+      <Modal ref={newClientRef}>
+        <NewClient onCancel={() => newClientRef.current?.toggleModal()} />
       </Modal>
     </>
   )

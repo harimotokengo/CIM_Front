@@ -1,8 +1,13 @@
-import Flex from '../../views/atoms/Flex'
-import ClientView from '../../views/organisms/Clients/Client'
-import ProjectDetailSidebar from '../../views/organisms/DefaultLayout/Contents/Detail/Sidebar'
+import { useState } from 'react'
+
+// import Flex from '../../views/atoms/Flex'
+// import ClientView from '../../views/organisms/Clients/Client'
+import ClientDetail from '../../views/organisms/Clients/Client/ClientDetail'
+// import ProjectDetailSidebar from '../../views/organisms/DefaultLayout/Contents/Detail/Sidebar'
 import HeaderMenu from '../../views/organisms/DefaultLayout/HeaderMenu'
 import { HeaderMenuItemProps } from '../../views/organisms/DefaultLayout/HeaderMenu/HeaderMenuItem'
+import ClientList from '../../views/organisms/Matters/ListWork'
+import Records from '../../views/organisms/Matters/Records'
 
 const menuItems: Omit<HeaderMenuItemProps, 'onClick'>[] = [
   { id: 'detail', label: '詳細情報', isCurrent: true },
@@ -14,16 +19,17 @@ const menuItems: Omit<HeaderMenuItemProps, 'onClick'>[] = [
   { id: 'file', label: 'ファイル', isCurrent: false },
 ]
 
-const Client = () => (
-  <>
-    <HeaderMenu menuItems={menuItems} />
-    <Flex layout="fill" style={{ overflowY: 'hidden' }}>
-      <ProjectDetailSidebar />
-      <Flex layout="stack" flex={1} style={{ height: '100%' }}>
-        <ClientView />
-      </Flex>
-    </Flex>
-  </>
-)
+const Client = () => {
+  const [items, setItems] = useState(menuItems)
+
+  return (
+    <>
+      <HeaderMenu items={items} setItems={setItems} />
+      {items[0].isCurrent && <ClientDetail />}
+      {items[1].isCurrent && <ClientList />}
+      {items[5].isCurrent && <Records />}
+    </>
+  )
+}
 
 export default Client
