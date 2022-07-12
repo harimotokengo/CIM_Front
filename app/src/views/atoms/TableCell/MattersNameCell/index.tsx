@@ -1,13 +1,9 @@
 import { TableCell } from '../../Table/TableCell'
-import { StyledNameIcon } from './Styled'
+import { NamePeople } from '../NamePeple'
 
 export const MattersNameCell = () => (
   <TableCell>
-    <StyledNameIcon>
-      <p>姓名</p>
-    </StyledNameIcon>
-    <StyledNameIcon>
-      <p>姓名</p>
-    </StyledNameIcon>
+    <NamePeople />
+    <NamePeople />
   </TableCell>
 )

@@ -7,7 +7,10 @@ import { StyledModal } from './Styled'
 
 const closeIcon = <img alt="close" src={close} style={{ width: '24px', height: '24px' }} />
 
-interface ModalProps {
+export interface ModalProps {
+  width?: string
+  title?: string
+  iconCloseStyle?: React.CSSProperties
   children: React.ReactNode | React.ReactNode[]
 }
 
@@ -17,7 +20,7 @@ export interface ModalHandles {
 
 // toggleをしたいからRefを参照してる
 const Modal = forwardRef<ModalHandles, ModalProps>((props, ref) => {
-  const { children } = props
+  const { title, iconCloseStyle, children, ...rest } = props
   const [isOpen, setIsOpen] = useState(false)
 
   useImperativeHandle(ref, () => ({
@@ -27,9 +30,10 @@ const Modal = forwardRef<ModalHandles, ModalProps>((props, ref) => {
   }))
 
   return (
-    <StyledModal isOpen={isOpen} onEscapeKeydown={() => setIsOpen(!isOpen)}>
+    <StyledModal {...rest} isOpen={isOpen} onEscapeKeydown={() => setIsOpen(!isOpen)}>
       {children}
-      <span className="modal-close" onClick={() => setIsOpen(false)}>
+      <span className="modal-title">{title}</span>
+      <span className="modal-close" style={iconCloseStyle} onClick={() => setIsOpen(false)}>
         {closeIcon}
       </span>
     </StyledModal>
