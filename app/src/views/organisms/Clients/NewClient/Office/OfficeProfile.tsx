@@ -1,36 +1,48 @@
 import { useState } from 'react';
 
-import { StyledOfficeProfile, StyledP } from './Styled'
-
-
+import { OForm,SForm, SFormHead, SFormInput } from './Styled'
 
 export const OfficeProfile = () => {
 
-  const [Name, setName] = useState("");
-  const [PhoneNumber, setPhoneNumber] = useState("");
-  const [PostCode, setPostCode] = useState("");
-  const [Address, setAddress] = useState("");
+  const [office, setOfficeName] = useState('');
+  const [phone, setOfficePhone] = useState('');
+  const [postcode, setOfficePostCode] = useState('');
+  const [address, setOfficeAddress] = useState('');
+
+  const ChangeOfficeName = (event: { target: HTMLInputElement }) => {
+    setOfficeName(event.target.value);
+  };
+  const ChangeOfficePhones = (event: { target: HTMLInputElement }) => {
+    setOfficePhone(event.target.value);
+  };
+  const ChangeOfficePoseCode = (event: { target: HTMLInputElement }) => {
+    setOfficePostCode(event.target.value);
+  };
+  const ChangeOfficeAddress = (event: { target: HTMLInputElement }) => {
+    setOfficeAddress(event.target.value);
+  };
+
 
   return (
-    <StyledOfficeProfile>
-      <StyledP>事務所名</StyledP>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <input type="text" value={Name} onChange={(e) =>setName(e.target.value)} />
-      </form>
-      <p>電話番号</p>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <input type="text" value={PhoneNumber} onChange={(e) =>setPhoneNumber(e.target.value)} />
-      </form>
-      <p>郵便番号</p>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <input type="text" value={PostCode} onChange={(e) =>setPostCode(e.target.value)} />
-      </form>
-      <p>住所</p>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <input type="text" value={Address} onChange={(e) =>setAddress(e.target.value)} />
-      </form>
-    </StyledOfficeProfile>
-  );
-};
+    <SForm>
+      <OForm>
+        <SFormHead>事務所名</SFormHead>
+        <SFormInput type="text" value={office} onChange={ChangeOfficeName} />
+      </OForm>
+      <OForm>
+        <SFormHead>電話番号</SFormHead>
+        <SFormInput type="text" value={phone} onChange={ChangeOfficePhones} />
+      </OForm>
+      <OForm>
+        <SFormHead>郵便番号</SFormHead>
+        <SFormInput type="text" value={postcode} onChange={ChangeOfficePoseCode} />
+      </OForm>
+      <OForm>
+        <SFormHead>住所</SFormHead>
+        <SFormInput type="text" value={address} onChange={ChangeOfficeAddress} />
+      </OForm>
+    </SForm>
+  )
+}
 
 export default OfficeProfile
