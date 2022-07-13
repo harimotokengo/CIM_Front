@@ -49,6 +49,16 @@ const Matters = () => {
       .flatMap(x => x || null)
       .filter(x => x !== null)
     setMatters(newMatters)
+    setMatters([
+      {
+        clientId: 0,
+        matterGenreId: 0,
+        name: `xname first_name`,
+        startDate: moment(0).format('YYYY/M/D'),
+        updateDate: moment(0).format('YYYY/M/D'),
+        matterStatus: '',
+      },
+    ])
   }, [clients, filter])
 
   const handleClick = (id: number) => {
@@ -67,7 +77,7 @@ const Matters = () => {
       <TableBody>
         {matters?.map(x =>
           x ? (
-            <TableRow onClick={() => handleClick(x.clientId)}>
+            <TableRow key={x.clientId} onClick={() => handleClick(x.clientId)}>
               <TableCol>
                 <MattersProjectCell
                   matterGenreId={x.matterGenreId}

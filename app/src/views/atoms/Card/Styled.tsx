@@ -20,6 +20,7 @@ export const StyledCard = styled.div<CardProps>`
   ${baseStyles}
 
   > .card-close {
+    cursor: pointer;
     position: absolute;
     right: 5px;
     top: 5px;
