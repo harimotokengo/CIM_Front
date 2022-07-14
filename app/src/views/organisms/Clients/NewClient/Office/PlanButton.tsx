@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { DPlan, PlanButton, SForm, SPlanHead } from './Styled'
+import { DPlan, PlanButton, PlanButtonTextSub, PlanButtonTextTitle, SForm, SPlanHead } from './Styled'
 
-const OfficePlanButton = () => {
+const OfficePlan = () => {
 
   const a = "無料プラン";
   const b = "スタンダードプラン";
@@ -12,13 +12,22 @@ const OfficePlanButton = () => {
     <SForm>
       <SPlanHead>プランを選択</SPlanHead>
       <DPlan>
-        <PlanButton>{a}</PlanButton>
-        <PlanButton>{b}</PlanButton>
-        <PlanButton>{c}</PlanButton>
+        <PlanButton>
+          <PlanButtonTextTitle>{a}</PlanButtonTextTitle>
+          <PlanButtonTextSub>XX ライセンスサポート</PlanButtonTextSub>
+        </PlanButton>
+        <PlanButton>
+          <PlanButtonTextTitle>{b}</PlanButtonTextTitle>
+          <PlanButtonTextSub>XX ライセンスサポート</PlanButtonTextSub>
+        </PlanButton>
+        <PlanButton>
+          <PlanButtonTextTitle>{c}</PlanButtonTextTitle>
+          <PlanButtonTextSub>XX ライセンスサポート</PlanButtonTextSub>
+        </PlanButton>
       </DPlan>
     </SForm>
   )
 }
 
-export default OfficePlanButton
+export default OfficePlan
 

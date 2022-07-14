@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const StyledOfficeProfile = styled.div`
   width: 534px;
-  marginBottom: 20px;
 `
 
 export const StyledP = styled.p` 
@@ -51,7 +50,6 @@ export const StyledForm = styled.form`
 
 export const SForm = styled.form`
   width: 534px;
-  marginBottom: 20px;
 `
 
 export const SFormHead = styled.div`
@@ -130,8 +128,9 @@ export const PlanButton = styled.button`
   box-sizing: border-box;
   width: 200px;
   height: 59px;
-  // left: 455px;
   top: 202px;
+  padding: 11px 12px;
+  text-align: left;
 
   background: #FFFFFF;
 
@@ -154,6 +153,34 @@ export const PlanButton = styled.button`
     height: 21px;
     margin-right: 0.25rem;
   }
+`
+
+export const PlanButtonTextTitle = styled.p`
+  left: 0px;
+  top: 0%;
+  bottom: 51.35%;
+
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+
+  color: #000000;
+`
+
+export const PlanButtonTextSub = styled.p`
+  left: 0px;
+  top: 51.35%;
+  bottom: 0%;
+
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 18px;
+
+  color: #A4A4A4;
 `
 
 export const SPlanHead = styled.div`
@@ -180,9 +207,28 @@ export const SPlanHead = styled.div`
   flex-grow: 0;
 `
 export const DPlan = styled.div`
-  // width: 534px;
   width: 40em;
-  marginBottom: 20px;
   display: flex;
   justify-content: space-between;
+`
+
+export const DPayment = styled.div`
+  width: 255px;
+  height: 24px;
+  left: 456px;
+  top: 301px;
+  margin-top: 34px;
+  margin-bottom: 34px;
+
+  /* md/Text md Light */
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 350;
+  font-size: 16px;
+  line-height: 24px;
+
+  /* identical to box height, or 150% */
+
+  /* bd.dark */
+  color: #39434D;
 `

@@ -2,44 +2,36 @@ import { useState } from 'react';
 
 import { OForm,SForm, SFormHead, SFormInput } from './Styled'
 
+
 export const OfficeProfile = () => {
+  const [officeValue, setOfficeValues] = useState({
+    name: '',
+    phone: '',
+    postcode: '',
+    address: ''
+  });
 
-  const [office, setOfficeName] = useState('');
-  const [phone, setOfficePhone] = useState('');
-  const [postcode, setOfficePostCode] = useState('');
-  const [address, setOfficeAddress] = useState('');
-
-  const ChangeOfficeName = (event: { target: HTMLInputElement }) => {
-    setOfficeName(event.target.value);
+  const ChangeOfficeValue = (event: { target: HTMLInputElement }) => {
+    setOfficeValues({ ...officeValue, [event.target.name]: event.target.value });
   };
-  const ChangeOfficePhones = (event: { target: HTMLInputElement }) => {
-    setOfficePhone(event.target.value);
-  };
-  const ChangeOfficePoseCode = (event: { target: HTMLInputElement }) => {
-    setOfficePostCode(event.target.value);
-  };
-  const ChangeOfficeAddress = (event: { target: HTMLInputElement }) => {
-    setOfficeAddress(event.target.value);
-  };
-
 
   return (
     <SForm>
       <OForm>
         <SFormHead>事務所名</SFormHead>
-        <SFormInput type="text" value={office} onChange={ChangeOfficeName} />
+        <SFormInput type="text" name="name" value={officeValue.name} onChange={ChangeOfficeValue} />
       </OForm>
       <OForm>
         <SFormHead>電話番号</SFormHead>
-        <SFormInput type="text" value={phone} onChange={ChangeOfficePhones} />
+        <SFormInput type="text" name="phone" value={officeValue.phone} onChange={ChangeOfficeValue} />
       </OForm>
       <OForm>
         <SFormHead>郵便番号</SFormHead>
-        <SFormInput type="text" value={postcode} onChange={ChangeOfficePoseCode} />
+        <SFormInput type="text" name="postcode" value={officeValue.postcode} onChange={ChangeOfficeValue} />
       </OForm>
       <OForm>
         <SFormHead>住所</SFormHead>
-        <SFormInput type="text" value={address} onChange={ChangeOfficeAddress} />
+        <SFormInput type="text" name="address" value={officeValue.address} onChange={ChangeOfficeValue} />
       </OForm>
     </SForm>
   )

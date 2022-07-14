@@ -1,12 +1,15 @@
+import { Element as ScrollElement } from 'react-scroll'
+
 import Button from '../../../atoms/Button'
 import Flex from '../../../atoms/Flex'
 import Footer from '../../../atoms/Footer'
 import { Main } from '../../../atoms/Main'
 // import Title from '../../../atoms/Title'
 import ClientForm from '../../../molecules/ReduxForm/Form/ClientForm'
+import OfficePayment from './Office/OfficePayment'
 // import { OfficeSubmitButton } from '../../../molecules/ReduxForm/Submit/OfficeSubmit'
 import OfficeProfile from './Office/OfficeProfile'
-import OfficePlanButton from './Office/PlanButton'
+import OfficePlan from './Office/PlanButton'
 
 
 interface MainClientProps {
@@ -23,10 +26,13 @@ const MainOffice = ({ onCancel }: MainClientProps) => {
     <ClientForm>
       <Main id="client-form-main" saveState>
         <Flex layout="fill-horizontal" justifyContent="center">
-          <Flex flexDirection="column" mt="160px" mb="20px" gap="20px">
+          <ScrollElement name="profile" />
+          <Flex flexDirection="column" mt="160px" mb="20px" gap="30px">
             <OfficeProfile />
-            <br />
-            <OfficePlanButton />
+            <ScrollElement name="plan" />
+            <OfficePlan />
+            <ScrollElement name="payment" />
+            <OfficePayment />
           </Flex>
         </Flex>
       </Main>
