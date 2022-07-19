@@ -1,18 +1,20 @@
 import { connect, useDispatch } from 'react-redux'
 import { Dispatch } from 'redux'
-import { submit } from 'redux-form'
 
-import { postClientRequest } from '../../../../store/actions/clientAction'
-import { IClient } from '../../../../store/models/clientModel'
+// import { submit } from 'redux-form'
+import { addOfficeAction } from '../../../../store/actions/officeAction'
+import { IOffice } from '../../../../store/models/officeModel'
 import { SecondaryButton } from '../../Button'
 
-export const clientSubmit = (client: IClient, dispatch: Dispatch) => {
-  dispatch(postClientRequest({ client }))
+export const officeSubmit = (office: IOffice, dispatch: Dispatch) => {
+  dispatch(addOfficeAction({ office }))
 }
 
 export const OfficeSubmitButton = () => {
   const dispatch = useDispatch()
-  return <SecondaryButton label="変更を保存する" onClick={() => dispatch(submit('client_form'))} />
+  return <SecondaryButton label="変更を保存する"
+  // onClick={() => dispatch(submit('office_form'))}
+    onClick={dispatch} />
 }
 
 export default connect()(OfficeSubmitButton)

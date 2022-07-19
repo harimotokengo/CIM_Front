@@ -2,25 +2,23 @@ import {
   ADD_OFFICE,
 } from '../actions/officeAction'
 
-export interface AddOffice {
+export interface IOffice {
   name: string
-  phone_number: string
-  post_code: string
+  phone: string
+  postcode: string
   address: string
-  plan: string
-  type: string
-  cnumber: string
-  deadline: string
-  cvc: string
+}
+
+export interface officeState {
+  office: IOffice
 }
 
 export interface setAddOfficePayload {
-  client: AddOffice
+  office: IOffice
 }
 export interface setAddOffice{
   type: typeof ADD_OFFICE
   payload: setAddOfficePayload
 }
 
-export type OfficeActions =
-  | AddOffice
+export type OfficeActions = setAddOffice

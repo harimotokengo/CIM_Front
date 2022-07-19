@@ -1,10 +1,17 @@
 import { useState } from 'react';
 
-import { DPayment, OForm,SForm, SFormHead, SFormInput } from './Styled'
+import { DPayment, Row, SForm, SFormHead, SFormInput } from './Styled'
 
+// 型定義
+interface OfficePaymentProps {
+  type: string
+  cnumber: string
+  deadline: string
+  cvc: string
+}
 
 export const OfficePayment = () => {
-  const [PaymentValue, setPaymentValues] = useState({
+  const [PaymentValue, setPaymentValues] = useState<OfficePaymentProps>({
     type: '',
     cnumber: '',
     deadline: '',
@@ -20,22 +27,22 @@ export const OfficePayment = () => {
       <DPayment>
         <span>お支払い情報</span>
       </DPayment>
-      <OForm>
+      <Row>
         <SFormHead>タイプ</SFormHead>
         <SFormInput type="text" name="type" value={PaymentValue.type} onChange={ChangePaymentValue} />
-      </OForm>
-      <OForm>
+      </Row>
+      <Row>
         <SFormHead>カード番号</SFormHead>
         <SFormInput type="text" name="cnumber" value={PaymentValue.cnumber} onChange={ChangePaymentValue} />
-      </OForm>
-      <OForm>
+      </Row>
+      <Row>
         <SFormHead>有効期限</SFormHead>
         <SFormInput type="text" name="deadline" value={PaymentValue.deadline} onChange={ChangePaymentValue} />
-      </OForm>
-      <OForm>
+      </Row>
+      <Row>
         <SFormHead>CVC</SFormHead>
         <SFormInput type="text" name="cvc" value={PaymentValue.cvc} onChange={ChangePaymentValue} />
-      </OForm>
+      </Row>
     </SForm>
   )
 }

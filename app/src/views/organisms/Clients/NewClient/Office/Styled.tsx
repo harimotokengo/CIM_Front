@@ -51,7 +51,7 @@ export const StyledForm = styled.form`
 export const SForm = styled.form`
   width: 534px;
 `
-
+// labelって名前の方が良い
 export const SFormHead = styled.div`
   width: 255px;
   height: 18px;
@@ -120,7 +120,7 @@ export const SFormTextArea = styled.textarea`
     transition: 0.3s;
   }
 `
-export const OForm = styled.div`
+export const Row = styled.div`
   padding-bottom: 24px;
 `
 

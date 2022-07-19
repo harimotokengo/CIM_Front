@@ -1,22 +1,28 @@
 import { Element as ScrollElement } from 'react-scroll'
 
+// import { getOfficeSelector } from '../../../../store/selectors/officeSelector'
+// import { getErrorSelector } from '../../../../store/selectors/sessionSelector'
 import Button from '../../../atoms/Button'
 import Flex from '../../../atoms/Flex'
 import Footer from '../../../atoms/Footer'
 import { Main } from '../../../atoms/Main'
 // import Title from '../../../atoms/Title'
 import ClientForm from '../../../molecules/ReduxForm/Form/ClientForm'
+import { OfficeSubmitButton } from '../../../molecules/ReduxForm/Submit/OfficeSubmit'
 import OfficePayment from './Office/OfficePayment'
 // import { OfficeSubmitButton } from '../../../molecules/ReduxForm/Submit/OfficeSubmit'
 import OfficeProfile from './Office/OfficeProfile'
 import OfficePlan from './Office/PlanButton'
 
 
-interface MainClientProps {
+interface MainOfficeProps {
   onCancel: () => void
 }
 
-const MainOffice = ({ onCancel }: MainClientProps) => {
+const MainOffice = ({ onCancel }: MainOfficeProps) => {
+  // const [requesting, setRequesting] = useState(false)
+  // const pending = useSelector(getOfficeSelector)
+  // const error = useSelector(getErrorSelector)
 
   const handleCancel = () => {
     onCancel()
@@ -39,7 +45,7 @@ const MainOffice = ({ onCancel }: MainClientProps) => {
       <Footer>
         <Flex layout="fill-centered" gap="24px">
           <Button variant="secondary" label="キャンセル" onClick={handleCancel} />
-          {/* <OfficeSubmitButton /> */}
+          <OfficeSubmitButton />
         </Flex>
       </Footer>
     </ClientForm>
