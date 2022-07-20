@@ -28,3 +28,4 @@ export default (state = initialState, action: OfficeActions): officeState => {
       }
   }
 }
+
