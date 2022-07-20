@@ -1,7 +1,6 @@
 import group46 from '../../../../assets/images/group_46.svg'
 import Button from '../../../atoms/Button'
 import HeaderAddButton from './HeaderAddButton'
-import HeaderAddOfficeButton from './HeaderAddOfficeButton'
 import HeaderCategoryIcon from './HeaderCategory'
 import HeaderSearch from './HeaderSearch'
 import { StyledHeaderContainer, StyledHeaderLeftContainer, StyledHeaderRightContainer, StyledNameIcon } from './Styled'
