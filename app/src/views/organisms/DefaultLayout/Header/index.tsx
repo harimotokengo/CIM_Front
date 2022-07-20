@@ -1,6 +1,7 @@
 import group46 from '../../../../assets/images/group_46.svg'
 import Button from '../../../atoms/Button'
 import HeaderAddButton from './HeaderAddButton'
+import HeaderAddOfficeButton from './HeaderAddOfficeButton'
 import HeaderCategoryIcon from './HeaderCategory'
 import HeaderSearch from './HeaderSearch'
 import { StyledHeaderContainer, StyledHeaderLeftContainer, StyledHeaderRightContainer, StyledNameIcon } from './Styled'
@@ -26,6 +27,7 @@ const Header = (props: HeaderProps) => {
           <p>姓名</p>
         </StyledNameIcon>
         <Button label='ログイン' variant='primary-green' onClick={loginClick} />
+        <HeaderAddOfficeButton />
       </StyledHeaderRightContainer>
     </StyledHeaderContainer>
   )
