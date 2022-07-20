@@ -67,7 +67,7 @@ const Matters = () => {
       <TableBody>
         {matters?.map(x =>
           x ? (
-            <TableRow onClick={() => handleClick(x.clientId)}>
+            <TableRow key={x.clientId} onClick={() => handleClick(x.clientId)}>
               <TableCol>
                 <MattersProjectCell
                   matterGenreId={x.matterGenreId}

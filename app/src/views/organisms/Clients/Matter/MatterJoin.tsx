@@ -43,8 +43,9 @@ const MatterJoin = ({ fields, isEdit = false }: WrappedFieldArrayProps<IMatterJo
 
   return (
     <>
-      {fields.map((x, _) => (
-        <Flex flexDirection="column" gap="24px" style={{ width: '534px', marginBottom: '20px' }}>
+      {fields.map((x, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <Flex key={index} flexDirection="column" gap="24px" style={{ width: '534px', marginBottom: '20px' }}>
           <FlexItem width="120px">
             <Field name={`${x}.belong_side_id`} label="所属" category={BELONGING_SIDE} component={MatterSelect} />
           </FlexItem>

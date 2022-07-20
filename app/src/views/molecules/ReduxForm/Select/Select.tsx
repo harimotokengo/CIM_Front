@@ -4,15 +4,16 @@ import { WrappedFieldProps } from 'redux-form'
 
 import { StyledSelect } from './Styled'
 
-type ReduxFormSelectProps = {
-  category: any[]
+export type ReduxFormSelectProps = {
+  width?: string
+  category: string[] | number[]
 }
 
 export const Select = (props: WrappedFieldProps & ReduxFormSelectProps) => {
-  const { input, category } = props
+  const { input, category, ...rest } = props
 
   return (
-    <StyledSelect {...input}>
+    <StyledSelect {...input} {...rest}>
       <option value="" disabled>
         {}
       </option>

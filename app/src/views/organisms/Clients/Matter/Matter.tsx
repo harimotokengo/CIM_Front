@@ -63,7 +63,8 @@ const Matter = ({ fields, isEdit = false }: WrappedFieldArrayProps<IMatter> & Ma
   return (
     <>
       {fields.map((x, i) => (
-        <Flex flexDirection="column" gap="24px" style={{ width: '534px', marginBottom: '20px' }}>
+        // eslint-disable-next-line react/no-array-index-key
+        <Flex key={i} flexDirection="column" gap="24px" style={{ width: '534px', marginBottom: '20px' }}>
           <FlexItem width="120px" stretch={false}>
             <Field name={`${x}.matter_genre_id`} label="案件区分" category={MATTER_GENRE} component={MatterSelect} />
           </FlexItem>
