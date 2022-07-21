@@ -14,7 +14,8 @@ export const StyledModal2 = Modal2.styled`
 
   .modal-close {
     position: absolute;
-    right: 464px;
-    top: 90px;
+    right: 5%;
+    top: 5%;
+    bottom: 25%;
   }
 `

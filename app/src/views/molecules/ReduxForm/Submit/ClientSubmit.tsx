@@ -11,6 +11,7 @@ export const clientSubmit = (client: IClient, dispatch: Dispatch) => {
 }
 
 // dispatchでRailsに飛ばしている
+// client_form→ReduxFormへ
 export const ClientSubmitButton = () => {
   const dispatch = useDispatch()
   return <PrimaryRedButton label="新規登録" onClick={() => dispatch(submit('client_form'))} />
