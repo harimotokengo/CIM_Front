@@ -1,36 +1,34 @@
-import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
-import { addOfficeAction } from '../../../../../store/actions/officeAction';
+// import { useDispatch } from 'react-redux';
 import { Row, SForm, SFormHead, SFormInput } from './Styled'
 
 // 型定義
-// interface OfficeProps {
-//   name: string
-//   phone: string
-//   postcode: string
-//   address: string
-// }
+interface OfficeProps {
+  name: string
+  phone: string
+  postcode: string
+  address: string
+}
 export const OfficeProfile = () => {
-  const dispatch = useDispatch();
-  // const [officeValue, setOfficeValues] = useState<OfficeProps>({
-  //   name: '',
-  //   phone: '',
-  //   postcode: '',
-  //   address: ''
-  // });
-  const ChangeOfficeValue = () => {
-    dispatch(addOfficeAction);
+  // const dispatch = useDispatch();
+  const [officeValue, setOfficeValues] = useState<OfficeProps>({
+    name: '',
+    phone: '',
+    postcode: '',
+    address: ''
+  });
+
+  const ChangeOfficeValue = (e: { target: HTMLInputElement }) => {
+    setOfficeValues({ ...officeValue, [e.target.name]: e.target.value });
   };
-  // const ChangeOfficeValue = (event: { target: HTMLInputElement }) => {
-  //   setOfficeValues({ ...officeValue, [event.target.name]: event.target.value });
-  // };
   return (
     <SForm>
       <Row>
         <SFormHead>事務所名</SFormHead>
-        <SFormInput type="text" name="name"  onChange={ChangeOfficeValue} />
+        <SFormInput type="text" name="name" value={officeValue.name} onChange={ChangeOfficeValue} />
       </Row>
-      {/* <Row>
+      <Row>
         <SFormHead>電話番号</SFormHead>
         <SFormInput type="text" name="phone" value={officeValue.phone} onChange={ChangeOfficeValue} />
       </Row>
@@ -41,7 +39,7 @@ export const OfficeProfile = () => {
       <Row>
         <SFormHead>住所</SFormHead>
         <SFormInput type="text" name="address" value={officeValue.address} onChange={ChangeOfficeValue} />
-      </Row> */}
+      </Row>
     </SForm>
   )
 }

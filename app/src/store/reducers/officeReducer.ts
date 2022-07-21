@@ -6,6 +6,7 @@ import {
 } from '../actions/officeAction'
 import { OfficeActions, officeState } from '../models/officeModel'
 
+// initialStateがstate？
 const initialState: officeState = {
   office: {
     name: '',
@@ -15,6 +16,7 @@ const initialState: officeState = {
   },
 }
 
+// dispatchされるのはOfficeAction
 export default (state = initialState, action: OfficeActions): officeState => {
   switch (action.type) {
     case ADD_OFFICE:

@@ -16,6 +16,7 @@ export interface officeState {
 export interface setAddOfficePayload {
   office: IOffice
 }
+
 export interface setAddOffice{
   type: typeof ADD_OFFICE
   payload: setAddOfficePayload
