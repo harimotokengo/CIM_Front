@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import { FlexboxProps } from 'styled-system'
 
 import { BaseProps } from '../Base'
@@ -8,7 +8,7 @@ import { StyledFlex } from './Styled'
 type Layout = 'fill' | 'fill-centered' | 'fill-horizontal' | 'fill-horizontal-centered' | 'equal-columns' | 'stack'
 
 export interface FlexProps extends BaseProps, FlexboxProps {
-  children?: any
+  children: ReactNode
   flexShrink?: number
   layout?: Layout
   style?: {}
