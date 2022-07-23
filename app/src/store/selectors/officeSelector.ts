@@ -5,4 +5,4 @@ import { AppState } from '../rootReducer'
 
 const getOffice = (state: AppState) => state.office.office
 
-export const getOfficeSelector = createSelector(getOffice, pending => pending)
+export const getOfficeSelector = createSelector(getOffice, office => office)
