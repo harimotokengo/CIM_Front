@@ -9,18 +9,19 @@ import { Row, SForm, SFormHead, SFormInput } from './Styled'
 export const OfficeProfile = () => {
   const dispatch = useDispatch();
 
-  // reduxのstateをとってくる
-  const office = useSelector(getOfficeSelector)
+  // reduxのstate(最初は...initialStateの中身)をとってくる
+  const state = useSelector(getOfficeSelector)
 
   const handleChange = (e: { target: HTMLInputElement }) => {
     // payloadの中身を用意し、
-    // onChangeで受けとったeventの中身をpayloadに代入
+    // onChangeで受けとったeventの中身をpayloadに代入する
     const payload: setAddOfficePayload = {
       office: {
-        ...office, [e.target.name]: e.target.value
+        // 今の...stateに、[name]に入力された[value]を上書きする
+        ...state, [e.target.name]: e.target.value
       }
     }
-    // actionオブジェクトとpayloadをreduxに送る(dispatchする)
+    // actionオブジェクトと上記payloadをreduxに送る(dispatchする)
     dispatch(addOfficeAction(payload));
   };
 
@@ -28,19 +29,19 @@ export const OfficeProfile = () => {
     <SForm>
       <Row>
         <SFormHead>事務所名</SFormHead>
-        <SFormInput type="text" name="name" value={office.name} onChange={handleChange} />
+        <SFormInput type="text" name="name" value={state.name} onChange={handleChange} />
       </Row>
       <Row>
         <SFormHead>電話番号</SFormHead>
-        <SFormInput type="text" name="phone" value={office.phone} onChange={handleChange} />
+        <SFormInput type="text" name="phone" value={state.phone} onChange={handleChange} />
       </Row>
       <Row>
         <SFormHead>郵便番号</SFormHead>
-        <SFormInput type="text" name="postcode" value={office.postcode} onChange={handleChange} />
+        <SFormInput type="text" name="postcode" value={state.postcode} onChange={handleChange} />
       </Row>
       <Row>
         <SFormHead>住所</SFormHead>
-        <SFormInput type="text" name="address" value={office.address} onChange={handleChange} />
+        <SFormInput type="text" name="address" value={state.address} onChange={handleChange} />
       </Row>
     </SForm>
   )
