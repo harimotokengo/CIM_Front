@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {
   ADD_OFFICE,
+  PAY_OFFICE,
 } from '../actions/officeAction'
 import { OfficeActions, officeState } from '../models/officeModel'
 
@@ -14,6 +15,12 @@ const initialState: officeState = {
     postcode: '',
     address: '',
   },
+  officePay: {
+    type: '',
+    cardNumber: '',
+    deadline: '',
+    cvc: '',
+  },
 }
 // dispatchされるのはOfficeAction
 export default (state = initialState, action: OfficeActions): officeState => {
@@ -22,6 +29,11 @@ export default (state = initialState, action: OfficeActions): officeState => {
       return {
         ...state,
         office: action.payload.office,
+      }
+    case PAY_OFFICE:
+      return {
+        ...state,
+        officePay: action.payload.officePay,
       }
     default:
       return {

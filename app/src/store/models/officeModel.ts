@@ -11,6 +11,7 @@ export interface IOffice {
 }
 export interface officeState {
   office: IOffice
+  officePay: PayOffice
 }
 export interface setAddOfficePayload {
   office: IOffice
@@ -26,9 +27,6 @@ export interface PayOffice {
   cardNumber: string
   deadline: string
   cvc: string
-}
-export interface officePayState {
-  officePay: PayOffice
 }
 export interface setPayOfficePayload {
   officePay: PayOffice

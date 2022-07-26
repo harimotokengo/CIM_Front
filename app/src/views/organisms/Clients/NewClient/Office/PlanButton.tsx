@@ -1,5 +1,5 @@
 
-import { Flex, PlanButton, PlanButtonSubTitle, PlanButtonTitle, SForm, SPlanHead } from './Styled'
+import { Flex, Form, PlanButton, PlanButtonSubTitle, PlanButtonTitle, PlanHead } from './Styled'
 
 const OfficePlan = () => {
 
@@ -8,8 +8,8 @@ const OfficePlan = () => {
   const c = "ビジネスプラン"
 
   return (
-    <SForm>
-      <SPlanHead>プランを選択</SPlanHead>
+    <Form>
+      <PlanHead>プランを選択</PlanHead>
       <Flex>
         <PlanButton>
           <PlanButtonTitle>{a}</PlanButtonTitle>
@@ -24,7 +24,7 @@ const OfficePlan = () => {
           <PlanButtonSubTitle>XX ライセンスサポート</PlanButtonSubTitle>
         </PlanButton>
       </Flex>
-    </SForm>
+    </Form>
   )
 }
 

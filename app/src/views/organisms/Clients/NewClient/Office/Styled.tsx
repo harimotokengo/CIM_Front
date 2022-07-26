@@ -183,7 +183,7 @@ export const PlanButtonSubTitle = styled.p`
   color: #A4A4A4;
 `
 
-export const SPlanHead = styled.div`
+export const PlanHead = styled.div`
   width: 255px;
   height: 18px;
   margin-bottom: 2em;
