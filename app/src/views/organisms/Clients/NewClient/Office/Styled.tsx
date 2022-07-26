@@ -124,7 +124,7 @@ export const Row = styled.div`
   padding-bottom: 24px;
 `
 
-export const PlanButton = styled.button`
+export const PlanButton = styled.label`
   box-sizing: border-box;
   width: 200px;
   height: 59px;
@@ -155,7 +155,7 @@ export const PlanButton = styled.button`
   }
 `
 
-export const PlanButtonTextTitle = styled.p`
+export const PlanButtonTitle = styled.p`
   left: 0px;
   top: 0%;
   bottom: 51.35%;
@@ -169,7 +169,7 @@ export const PlanButtonTextTitle = styled.p`
   color: #000000;
 `
 
-export const PlanButtonTextSub = styled.p`
+export const PlanButtonSubTitle = styled.p`
   left: 0px;
   top: 51.35%;
   bottom: 0%;
@@ -181,6 +181,11 @@ export const PlanButtonTextSub = styled.p`
   line-height: 18px;
 
   color: #A4A4A4;
+`
+
+export const PlanButtonInput = styled.input`
+
+  }
 `
 
 export const SPlanHead = styled.div`
@@ -206,7 +211,7 @@ export const SPlanHead = styled.div`
   order: 0;
   flex-grow: 0;
 `
-export const DPlan = styled.div`
+export const Flex = styled.div`
   width: 40em;
   display: flex;
   justify-content: space-between;

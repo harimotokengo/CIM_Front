@@ -14,8 +14,9 @@ export const OfficeProfile = () => {
 
   const handleChange = (e: { target: HTMLInputElement }) => {
     // payloadの中身を用意し、
-    // onChangeで受けとったeventの中身をpayloadに代入する
+    // onChangeで受けとったevent(e)の中身をpayloadに代入する
     const payload: setAddOfficePayload = {
+      // office:{name="",phone="",...}の中身を...stateで展開
       office: {
         // 今の...stateに、[name]に入力された[value]を上書きする
         ...state, [e.target.name]: e.target.value

@@ -1,25 +1,23 @@
-import { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { payOfficeAction } from '../../../../../store/actions/officeAction';
+import { setPayOfficePayload } from '../../../../../store/models/officeModel';
+import { getPayOfficeSelector } from '../../../../../store/selectors/officeSelector';
 import { DPayment, Row, SForm, SFormHead, SFormInput } from './Styled'
 
-// 型定義
-interface OfficePaymentProps {
-  type: string
-  cnumber: string
-  deadline: string
-  cvc: string
-}
-
 export const OfficePayment = () => {
-  const [PaymentValue, setPaymentValues] = useState<OfficePaymentProps>({
-    type: '',
-    cnumber: '',
-    deadline: '',
-    cvc: ''
-  });
+  const dispatch = useDispatch();
+  const state = useSelector(getPayOfficeSelector)
 
-  const ChangePaymentValue = (event: { target: HTMLInputElement }) => {
-    setPaymentValues({ ...PaymentValue, [event.target.name]: event.target.value });
+
+  const handleChange = (e: { target: HTMLInputElement }) => {
+    const payload: setPayOfficePayload = {
+      officePay: {
+        ...state,[e.target.name]:e.target.value
+      }
+    }
+    dispatch(payOfficeAction(payload));
   };
 
   return (
@@ -29,19 +27,19 @@ export const OfficePayment = () => {
       </DPayment>
       <Row>
         <SFormHead>タイプ</SFormHead>
-        <SFormInput type="text" name="type" value={PaymentValue.type} onChange={ChangePaymentValue} />
+        <SFormInput type="text" name="type" value={state.type} onChange={handleChange} />
       </Row>
       <Row>
         <SFormHead>カード番号</SFormHead>
-        <SFormInput type="text" name="cnumber" value={PaymentValue.cnumber} onChange={ChangePaymentValue} />
+        <SFormInput type="text" name="cardNumber" value={state.cardNumber} onChange={handleChange} />
       </Row>
       <Row>
         <SFormHead>有効期限</SFormHead>
-        <SFormInput type="text" name="deadline" value={PaymentValue.deadline} onChange={ChangePaymentValue} />
+        <SFormInput type="text" name="deadline" value={state.deadline} onChange={handleChange} />
       </Row>
       <Row>
         <SFormHead>CVC</SFormHead>
-        <SFormInput type="text" name="cvc" value={PaymentValue.cvc} onChange={ChangePaymentValue} />
+        <SFormInput type="text" name="cvc" value={state.cvc} onChange={handleChange} />
       </Row>
     </SForm>
   )

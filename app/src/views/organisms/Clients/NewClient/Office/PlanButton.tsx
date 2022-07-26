@@ -1,30 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { DPlan, PlanButton, PlanButtonTextSub, PlanButtonTextTitle, SForm, SPlanHead } from './Styled'
+import { Flex, PlanButton, PlanButtonInput, PlanButtonSubTitle, PlanButtonTitle, SForm, SPlanHead } from './Styled'
 
 const OfficePlan = () => {
 
-  const a = "無料プラン";
-  const b = "スタンダードプラン";
-  const c = "ビジネスプラン";
+  const [state, setState] = useState('Radio 1');
+
+  const handleChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+    setState(e.target.value);
+    console.log(state);
+  }
 
   return (
     <SForm>
       <SPlanHead>プランを選択</SPlanHead>
-      <DPlan>
+      <Flex>
+        {/* <PlanButton>
+          <PlanButtonTitle>無料プラン</PlanButtonTitle>
+          <PlanButtonSubTitle>XX ライセンスサポート</PlanButtonSubTitle>
+          <PlanButtonInput type="radio"
+            name='radioGroup'
+            id='radioGroup1'
+            value="Radio 1"
+            onChange={handleChange}
+            checked={state === 'Radio 1'}
+          />
+        </PlanButton>
+        <PlanButton>プラン２
+          <input type="radio"
+            name='radioGroup'
+            id='radioGroup2'
+            value="Radio 2"
+            onChange={handleChange}
+            checked={state === 'Radio 2'}
+          />
+        </PlanButton> */}
         <PlanButton>
-          <PlanButtonTextTitle>{a}</PlanButtonTextTitle>
-          <PlanButtonTextSub>XX ライセンスサポート</PlanButtonTextSub>
+          <PlanButtonTitle>無料プラン</PlanButtonTitle>
+          <PlanButtonSubTitle>XX ライセンスサポート</PlanButtonSubTitle>
         </PlanButton>
         <PlanButton>
-          <PlanButtonTextTitle>{b}</PlanButtonTextTitle>
-          <PlanButtonTextSub>XX ライセンスサポート</PlanButtonTextSub>
+          <PlanButtonTitle>スタンダードプラン</PlanButtonTitle>
+          <PlanButtonSubTitle>XX ライセンスサポート</PlanButtonSubTitle>
         </PlanButton>
         <PlanButton>
-          <PlanButtonTextTitle>{c}</PlanButtonTextTitle>
-          <PlanButtonTextSub>XX ライセンスサポート</PlanButtonTextSub>
+          <PlanButtonTitle>ビジネスプラン</PlanButtonTitle>
+          <PlanButtonSubTitle>XX ライセンスサポート</PlanButtonSubTitle>
         </PlanButton>
-      </DPlan>
+      </Flex>
     </SForm>
   )
 }
