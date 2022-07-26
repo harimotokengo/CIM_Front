@@ -48,11 +48,11 @@ export const StyledForm = styled.form`
   flex-grow: 0;
 `
 
-export const SForm = styled.form`
+export const Form = styled.form`
   width: 534px;
 `
 // labelって名前の方が良い
-export const SFormHead = styled.div`
+export const FormLabel = styled.div`
   width: 255px;
   height: 18px;
   margin-bottom: 0.8em;
@@ -76,7 +76,7 @@ export const SFormHead = styled.div`
   flex-grow: 0;
 `
 
-export const SFormInput = styled.input`
+export const FormInput = styled.input`
   /* _base/Forms/01. Input/01. Small */
 
   box-sizing: border-box;
@@ -183,11 +183,6 @@ export const PlanButtonSubTitle = styled.p`
   color: #A4A4A4;
 `
 
-export const PlanButtonInput = styled.input`
-
-  }
-`
-
 export const SPlanHead = styled.div`
   width: 255px;
   height: 18px;
@@ -217,7 +212,7 @@ export const Flex = styled.div`
   justify-content: space-between;
 `
 
-export const DPayment = styled.div`
+export const FormTitle = styled.div`
   width: 255px;
   height: 24px;
   left: 456px;

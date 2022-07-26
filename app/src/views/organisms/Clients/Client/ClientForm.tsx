@@ -61,7 +61,7 @@ const ClientForm = () => {
       <FieldArray label="メールアドレス" name="contact_emails_attributes" component={EmailCard} />
       <FieldArray label="住所" name="contact_addresses_attributes" component={AddressCard} />
       <Field name="client_type_id" type="hidden" component="input" />
-      <Field name="matters_attributes" component={MatterForm} />
+      <FieldArray name="matters_attributes" component={MatterForm} />
     </Flex>
   )
 }

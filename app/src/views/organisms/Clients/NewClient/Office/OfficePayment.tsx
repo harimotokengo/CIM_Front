@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { payOfficeAction } from '../../../../../store/actions/officeAction';
 import { setPayOfficePayload } from '../../../../../store/models/officeModel';
 import { getPayOfficeSelector } from '../../../../../store/selectors/officeSelector';
-import { DPayment, Row, SForm, SFormHead, SFormInput } from './Styled'
+import { Form, FormInput, FormLabel, FormTitle, Row } from './Styled'
 
 export const OfficePayment = () => {
   const dispatch = useDispatch();
@@ -21,27 +21,27 @@ export const OfficePayment = () => {
   };
 
   return (
-    <SForm>
-      <DPayment>
+    <Form>
+      <FormTitle>
         <span>お支払い情報</span>
-      </DPayment>
+      </FormTitle>
       <Row>
-        <SFormHead>タイプ</SFormHead>
-        <SFormInput type="text" name="type" value={state.type} onChange={handleChange} />
+        <FormLabel>タイプ</FormLabel>
+        <FormInput type="text" name="type" value={state.type} onChange={handleChange} />
       </Row>
       <Row>
-        <SFormHead>カード番号</SFormHead>
-        <SFormInput type="text" name="cardNumber" value={state.cardNumber} onChange={handleChange} />
+        <FormLabel>カード番号</FormLabel>
+        <FormInput type="text" name="cardNumber" value={state.cardNumber} onChange={handleChange} />
       </Row>
       <Row>
-        <SFormHead>有効期限</SFormHead>
-        <SFormInput type="text" name="deadline" value={state.deadline} onChange={handleChange} />
+        <FormLabel>有効期限</FormLabel>
+        <FormInput type="text" name="deadline" value={state.deadline} onChange={handleChange} />
       </Row>
       <Row>
-        <SFormHead>CVC</SFormHead>
-        <SFormInput type="text" name="cvc" value={state.cvc} onChange={handleChange} />
+        <FormLabel>CVC</FormLabel>
+        <FormInput type="text" name="cvc" value={state.cvc} onChange={handleChange} />
       </Row>
-    </SForm>
+    </Form>
   )
 }
 
