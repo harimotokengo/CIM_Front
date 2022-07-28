@@ -1,10 +1,12 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Field } from 'redux-form';
 
 import { addOfficeAction } from '../../../../../store/actions/officeAction';
 import { setAddOfficePayload } from '../../../../../store/models/officeModel';
 import { getOfficeSelector } from '../../../../../store/selectors/officeSelector';
+import { ReduxFormInput } from '../../../../molecules/ReduxForm/Input';
 import { Form, FormInput,FormLabel, Row } from './Styled'
+
 
 export const OfficeProfile = () => {
   const dispatch = useDispatch();
@@ -26,8 +28,12 @@ export const OfficeProfile = () => {
     dispatch(addOfficeAction(payload));
   };
 
+
   return (
     <Form>
+      <Row>
+        <Field name="name" label="テスト用フォーム" component={ReduxFormInput} />
+      </Row>
       <Row>
         <FormLabel>事務所名</FormLabel>
         <FormInput type="text" name="name" value={state.name} onChange={handleChange} />

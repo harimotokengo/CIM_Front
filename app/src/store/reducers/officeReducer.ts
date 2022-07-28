@@ -4,11 +4,15 @@
 import {
   ADD_OFFICE,
   PAY_OFFICE,
+  POST_OFFICE_FAILURE,
+  POST_OFFICE_REQUEST,
+  POST_OFFICE_SUCCESS,
 } from '../actions/officeAction'
 import { OfficeActions, officeState } from '../models/officeModel'
 
 // 事務所情報
 const initialState: officeState = {
+  pending: false,
   office: {
     name: '',
     phone: '',
@@ -21,6 +25,7 @@ const initialState: officeState = {
     deadline: '',
     cvc: '',
   },
+  error: null,
 }
 // dispatchされるのはOfficeAction
 export default (state = initialState, action: OfficeActions): officeState => {
@@ -34,6 +39,23 @@ export default (state = initialState, action: OfficeActions): officeState => {
       return {
         ...state,
         officePay: action.payload.officePay,
+      }
+    // post
+    case POST_OFFICE_REQUEST:
+      return {
+        ...state,
+        pending: true,
+      }
+    case POST_OFFICE_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        error: null,
+      }
+    case POST_OFFICE_FAILURE:
+      return {
+        ...state,
+        error: action.payload.error,
       }
     default:
       return {

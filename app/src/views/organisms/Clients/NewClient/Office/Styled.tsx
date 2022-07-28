@@ -124,7 +124,7 @@ export const Row = styled.div`
   padding-bottom: 24px;
 `
 
-export const PlanButton = styled.label`
+export const PlanButton = styled.button`
   box-sizing: border-box;
   width: 200px;
   height: 59px;
@@ -155,7 +155,7 @@ export const PlanButton = styled.label`
   }
 `
 
-export const PlanButtonTitle = styled.p`
+export const PlanButtonTitle = styled.label`
   left: 0px;
   top: 0%;
   bottom: 51.35%;

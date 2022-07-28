@@ -7,7 +7,7 @@ import Flex from '../../../atoms/Flex'
 import Footer from '../../../atoms/Footer'
 import { Main } from '../../../atoms/Main'
 // import Title from '../../../atoms/Title'
-import ClientForm from '../../../molecules/ReduxForm/Form/ClientForm'
+import OfficeForm from '../../../molecules/ReduxForm/Form/OfficeForm'
 import { OfficeSubmitButton } from '../../../molecules/ReduxForm/Submit/OfficeSubmit'
 import OfficePayment from './Office/OfficePayment'
 // import { OfficeSubmitButton } from '../../../molecules/ReduxForm/Submit/OfficeSubmit'
@@ -29,7 +29,7 @@ const MainOffice = ({ onCancel }: MainOfficeProps) => {
   }
 
   return (
-    <ClientForm>
+    <OfficeForm>
       <Main id="client-form-main" saveState>
         <Flex layout="fill-horizontal" justifyContent="center">
           <ScrollElement name="profile" />
@@ -48,7 +48,7 @@ const MainOffice = ({ onCancel }: MainOfficeProps) => {
           <OfficeSubmitButton />
         </Flex>
       </Footer>
-    </ClientForm>
+    </OfficeForm>
   )
 }
 
